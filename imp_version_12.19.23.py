@@ -29,7 +29,7 @@ cursegen2 = random.randint(1, 3)
 cursegen3 = random.randint(1, 3)
 randloot = random.randint(1, 3)
 if menu:
-    print("System made by Cosmo")
+    print("System made by Cosmo and amarvin")
     print(" ")
     print("1: Begin Generatorizer")
     print("2: Infomation about the Generatorizer")

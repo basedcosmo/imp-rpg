@@ -232,8 +232,6 @@ if choice == "7":
 # severely needs work to make this work good and proper, although, it's currently not the worst system in the world.
     
 if choice == "8":
-    #When this note is being written, I havent started on this. This is going to be hell to make
-    #"Golems", "Vampires", "Silver Dragons", "Blue Dragons", "Grey Dragons"
     print("Please choose a monster from this list:")
     print(enemy)
     print(' ')
@@ -506,8 +504,54 @@ if choice == "8":
         print("ac: 6")
         print("dmg: 3d6")
         print("notes: golems only take damage from bludgeoning attacks.")
-
-
+    if EIM == "Vampire":
+        print("Name: Vampire")
+        print("Items: Shortsword, Regal Gambeson,", random.randint(100,500), "Gold Coins")
+        print("str: 8")
+        print("dex: 6")
+        print("int: 6")
+        print("con: 9")
+        print("hp: 34/34")
+        print("mana: 8/8")
+        print("ac: 7")
+        print("dmg: 3d6")
+        print("notes: vampires will heal the same amount of all damage they deal.")
+    if EIM == "Silver Dragons":
+        print("Name: Silver Dragon")
+        print("Items: None")
+        print("str: 11")
+        print("dex: 9")
+        print("int: 11")
+        print("con: 11")
+        print("hp: 75/75")
+        print("mana: 4/4")
+        print("ac: 9")
+        print("dmg: 4d6")
+        print("notes: silver dragons are blind, but can sense the presence of gold. they also breathe fire, and deal an extra 1d6 fire damage")
+    if EIM == "Blue Dragons":
+        print("Name: Blue Dragon")
+        print("Items: None")
+        print("str: 11")
+        print("dex: 9")
+        print("int: 11")
+        print("con: 11")
+        print("hp: 55/55")
+        print("mana: 4/4")
+        print("ac: 9")
+        print("dmg: 3d6")
+        print("notes: blue dragons are smaller, but are impervious to frost damage. they also breathe freezing air, and deal an extra 1d6 frost damage")
+    if EIM == "Silver Dragons":
+        print("Name: Silver Dragon")
+        print("Items: None")
+        print("str: 11")
+        print("dex: 9")
+        print("int: 11")
+        print("con: 11")
+        print("hp: 121/121")
+        print("mana: 4/4")
+        print("ac: 9")
+        print("dmg: 5d6")
+        print("notes: grey dragons are very large and very dangerous. they breathe a petrification liquid, that petrifies living things. grey dragons are very weak to fire damage, and take an extra x3 fire damage.")
 
 
 

@@ -6,7 +6,7 @@ wizardspells = ["Magic Missile", "Fireball", "Firebolt", "Arcane Light", "Invisi
 sorcererspells =  ["Magic Missile", "Fireball", "Firebolt", "Arcane Light", "Invisibility", "Lightning Bolt", "Chain Lightning", "Locate Object", "Darkvision", "Enchant Weapon", "Haste", "Arcane Shield", "Ignite Weapon", "Cure Drunkard"]
 clericspells = ["Holy Light", "Turn Undead", "Minor Healing", "Major Healing", "Prayer of Mass Healing", "Cure Wounds", "Cure Sickness", "Bless Person", "Protection", "Prayer", "Magic Missile"]
 paladinspells = ["Holy Light", "Turn Undead", "Minor Healing", "Major Healing", "Bless Person", "Protection", "Thunderous Smite", "Holy Smite", "Searing Smite", "Insightful Question", "Dispell Curse"]
-spellscrolls = ["Magic Missile", "Fireball", "Firebolt", "Arcane Light", "Invisibility", "Lightning Bolt", "Chain Lightning", "Locate Object", "Lead to Gold", "Darkvision", "Enchant Weapon", "Haste", "Arcane Shield", "Holy Light", "Turn Undead", "Minor Healing", "Major Healing", "Bless Person", "Protection", "Smite Undead", "Prayer", "Magic Missile", "Identify", "Dispell Curse"]
+spellscrolls = ["Magic Missile", "Fireball", "Firebolt", "Arcane Light", "Invisibility", "Lightning Bolt", "Chain Lightning", "Locate Object", "Lead to Gold", "Darkvision", "Enchant Weapon", "Haste", "Arcane Shield", "Holy Light", "Turn Undead", "Minor Healing", "Major Healing", "Bless Person", "Protection", "Smite Undead", "Prayer", "Magic Missile", "Identify", "Dispell Curse", "Speak to Animals"]
 weapon = ["Shortsword", "Longsword", "Greatsword", "Club", "Mace", "Maul", "Druidic Staff", "Spellbook", "Shortbow", "Longbow", "Crossbow", "Dagger", "Rapier", "Lute", "Drum and Drumsticks", "Gauntlets", "Crystal Ball", "Hatchet", "Waraxe", "Danish Axe"]
 items = "Nothing"
 item = ["Torch", "Glasses", "Mirror", "Holy Water", "Holy Symbol", "Beartrap", "Thief's Tools", "Map", "Compass", "Lead Fishing Weight", "Pint of Ale", "Glass of Wine", "Horn of Mead", "Lead Boots", "Raincoat", "Light Cloak", "Fake Amulet of Yendor"]
@@ -18,8 +18,31 @@ jewels = ["Necklace", "Ring", "Cape", "Helmet", "Gloves", "Toering", "Belt"]
 jtype = ["Intellect", "Vigor", "Vitality", "Speed", "Darkvision", "Binding", "Blinding", "Slowness", "Light", "Springing", "Reading", "Purification", "Chastity", "Disintegration"]
 enemy = ["Orcs", "Goblins", "Skeletons", "Zombies", "Mummies", "Slimes", "Giant Bats", "Wolves", "Greedy Gnomes", "Cultists", "Demons", "Kobolds", "Bears", "Trogbears", "Centaurs", "Ogres", "Knights", "Minotaurs", "Ettins", "Incubi", "Succubi", "Trolls", "Golems", "Vampires", "Grey Dragons", "Blue Dragons", "Silver Dragons"]
 Wtype = ["Sword", "Axe", "Maul", "Bow", "Staff"]
-Weffect = ["Mjolnir, Hammer of Lighting", "Sumarbrander, Sword of Summer", "Gungnir, Spear of The All-Father", "Hrunting, the Blood Tempered Blade", "Sharur, the Smasher of Thousands", "Dyrnwyn, Blade of Fire", "Excalibur, the Holy Blade", "Gram, Blade of the Dragon Slayer", "Sting, the Orc Slayer", "Skofnung, King's Blade", "Cinder, the Scalding Halberd", "Throthnur, the Elven Bow of Truth", "Fulgor, Lightning of the North", "Aegis, the Speaking Shield", "Nipalan, the Pushing Arrow", "Mustaine, Shirt of mettalic a capella singers", "Buckety, Stanley's Bottomless Bucket"]
+Weffect = ["Mjolnir, Hammer of Lighting", "Sumarbrander, Sword of Summer", "Gungnir, Spear of The All-Father", "Hrunting, the Blood Tempered Blade", "Sharur, the Smasher of Thousands", "Dyrnwyn, Blade of Fire", "Excalibur, the Holy Blade", "Gram, Blade of the Dragon Slayer", "Sting, the Orc Slayer", "Skofnung, King's Blade", "Cinder, the Scalding Halberd", "Throthnur, the Elven Bow of Truth", "Fulgor, Lightning of the North", "Aegis, the Speaking Shield", "Nipalan, the Pushing Arrow", "Mustaine, Mettalic Aerodynamic shirt", "Billiam, Stanley's Bottomless Bucket"]
 print("character generatorizer")
+name = "None"
+race = "None"
+cclass = "None"
+strength = 0
+dexterity = 0
+intelligence = 0
+constitution = 0
+hp = 0
+mana = 0
+ac = 0
+
+fart = [
+    name,
+    race,
+    cclass,
+    strength,
+    dexterity,
+    intelligence,
+    constitution,
+    hp,
+    mana,
+    ac
+]
 menu = True
 doom = False
 alicar = False
@@ -83,7 +106,18 @@ if menu:
             race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome, Hobbit)  ")
         if cclass == "Adventurer":
             race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome, Hobbit)  ")
-        else: race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome)  ")
+        if cclass == "Fighter":
+            race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome)  ")
+        if cclass == "Wizard":
+            race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome)  ")
+        if cclass == "Cleric":
+            race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome)  ")
+        if cclass == "Sorcerer":
+            race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome)  ")
+        if cclass == "Hunter":
+            race = input("What is your race? (Half-Orc, Half-Elf, Elf)  ")
+        if cclass == "Paladin":
+            race = input("What is your race? (Human, Dwarf)  ")
         if race == "Human":
             racialbonus = "no racial bonus"
         elif race == "Half-Orc":
@@ -92,6 +126,10 @@ if menu:
         elif race == "Elf":
             racialbonus == "elvish dexterity"
             dexterity = dexterity + 1
+        elif race == "Half-Elf":
+            racialbonus == "druidic instincts"
+            racialspecial == "gain the spell 'Speak to Animals'"
+
         elif race == "Dwarf":
             racialbonus == "dwarven darkvision"
             racialspecial = "You have Darkvision, 60 feet."
@@ -103,6 +141,7 @@ if menu:
             racialbonus = "hobbit dexterity"
             racialspecial = "Hobbits are locked to Thieves and Adventurers, if you arent a thief or adventurer, you must make a new character."
 
+        os.system('cls')
         print("You are", name, "× You are a", race, "×" " You are a", cclass, "×", racialspecial, "×", classspecial)
         print("Your full character name is:", name + " the", race, cclass)
         if cclass == "Wizard":
@@ -113,6 +152,8 @@ if menu:
             print("Your starting spells are:", random.choice(wizardspells) + ",", random.choice(wizardspells) + ",", random.choice(wizardspells) + ",", random.choice(wizardspells))
         if cclass == "Paladin":
             print("Your starting spells are:", random.choice(paladinspells) + ",", random.choice(paladinspells) + ",", random.choice(paladinspells))
+        if race == "Half-Elf":
+            print("You have an additional race inherant spell: Speak to Animals")
         if cclass == "Fighter":
             print("Your starting items are: Blessed +1 Longsword, Uncursed Wooden Shield, Uncursed Warrior's Tunic, Uncursed Potion of Healing")
         if cclass == "Wizard":
@@ -145,7 +186,7 @@ if menu:
         if ac <= 4:
             ac = 4
         print("ac:", ac + 1)
-        input("")
+
 if choice == "2":
     menu = False
     print("Hello! The Generatorizer is a basic character generator system for any basic roleplaying game,")
@@ -162,7 +203,7 @@ if choice == "4":
     menu = False
     print("Welcome to the spell codex")
     print("Please choose a spellcasting class")
-    print("(Cleric, Paladin, Wizard, Sorcerer)")
+    print("(Cleric, Paladin, Wizard, Sorcerer, Half-Elf, All)")
     select = input("# ")
     if select == "Cleric":
         print(clericspells)
@@ -172,6 +213,11 @@ if choice == "4":
         print(wizardspells)
     elif select == "Sorcerer":
         print(sorcererspells)
+    elif select == "Half-Elf":
+        print("['Speak to Animals']")
+    elif select == "All":
+        print(spellscrolls)
+
     menu = True
 
 levelup = ["+1 strength", "+1 dexterity", "+1 constitution", "+1 intelligence", "+6 mHP", "Learn a random spell"]
@@ -179,7 +225,7 @@ if choice == "5":
     menu = False
     print("I am now automatically generating a level up reward!")
     print("Drum roll please...")
-    time.sleep(3)
+    time.sleep(2)
     print("Your level bonus is: ", random.choice(levelup))
 
 if choice == "6":
@@ -202,9 +248,9 @@ if choice == "6":
         print(random.choice(blesscurse), random.choice(armor))
         print(random.choice(blesscurse), random.choice(armor))
     if fart == "Treasure":
-        print(random.choice(blesscurse), random.choice(ttype), random.choice(treasure), "worth", random.randint(1,700), "Gold Pieces")
-        print(random.choice(blesscurse), random.choice(ttype), random.choice(treasure), "worth", random.randint(1,700), "Gold Pieces")
-        print(random.choice(blesscurse), random.choice(ttype), random.choice(treasure), "worth", random.randint(1,700), "Gold Pieces")
+        print(random.choice(blesscurse), random.choice(ttype), random.choice(treasure), "worth", random.randint(1,700), "¤")
+        print(random.choice(blesscurse), random.choice(ttype), random.choice(treasure), "worth", random.randint(1,700), "¤")
+        print(random.choice(blesscurse), random.choice(ttype), random.choice(treasure), "worth", random.randint(1,700), "¤")
     if fart == "Scroll":
         print(random.choice(blesscurse), "Scroll of", random.choice(spellscrolls))
         print(random.choice(blesscurse), "Scroll of", random.choice(spellscrolls))
@@ -218,13 +264,14 @@ if choice == "6":
         print(random.choice(blesscurse), random.choice(item))
         print(random.choice(blesscurse), random.choice(weapon))
         print(random.choice(blesscurse), random.choice(armor))
-        print(random.choice(blesscurse), random.choice(ttype), random.choice(treasure), "worth", random.randint(1,300), "Gold Pieces")
+        print(random.choice(blesscurse), random.choice(ttype), random.choice(treasure), "worth", random.randint(1,300), "¤")
         print(random.choice(blesscurse), "Scroll of", random.choice(spellscrolls))
         print(random.choice(blesscurse), "Wand of", random.choice(spellscrolls))
 
 shopyn = ["Is", "Isn't", "Isn't", "Isn't", "Isn't", "Isn't"]
 traps = ["a Pitfall Trap", "a Spike Trap", "a Mimic", "a Fake Door", "an Exploding Chest", "a Firebreathing Chest", "a Boulder Trap at the Door", "a Boulder Trap above a Chest", "no Traps", "no Traps", "no Traps", "no Traps"]
 if choice == "7":
+    print("\nWarning this section of code is outdated\n")
     floor = input("What floor are you on?  ")
     print("Now generating a room...")
     door = random.randint(1,3)
@@ -238,15 +285,18 @@ if choice == "7":
     print("     There", random.choice(shopyn), "a shop in this room.")
     print("     There is also are two", random.choice(enemy), "in this room")
 # severely needs work to make this work good and proper, although, it's currently not the worst system in the world.
-    
+shit = False    
 if choice == "8":
+    shit = True
+while shit:
+    os.system('cls')
     print("Please choose a monster from this list:")
     print(enemy)
     print(' ')
     EIM = input("Please input your choice here (Cap. Sensitive):   ")
     if EIM == "Orcs":
         print("Name: Orc")
-        print("Items: Longsword, Gambeson,", random.randint(1,40), "Gold Coins")
+        print("Items: Longsword, Gambeson,", random.randint(1,40), "¤")
         print("str: 8")
         print("dex: 5")
         print("int: 4")
@@ -258,7 +308,7 @@ if choice == "8":
         print("notes: orcs will petrify in natural or holy light.")
     if EIM == "Goblins":
         print("Name: Goblin")
-        print("Items: Orcish Shortsword, Dark Wraps,", random.randint(1,40), "Gold Coins")
+        print("Items: Shortsword, Dark Wraps,", random.randint(1,40), "¤")
         print("str: 5")
         print("dex: 8")
         print("int: 4")
@@ -267,10 +317,10 @@ if choice == "8":
         print("mana: 4/4")
         print("ac: 9")
         print("dmg: 1d6")
-        print("notes: goblins can be payed to leave players alone by means of gold coins or treasure, which is based off of this equasion ((int - 12) x 10)")
+        print("notes: goblins can be payed to leave players alone by means of gold coins (¤) or treasure, which is based off of this equasion ((int - 12) x 10)")
     if EIM == "Skeletons":
         print("Name: Skeleton")
-        print("Items: Shortsword, Tattered Leather,", random.randint(1,40), "Gold Coins")
+        print("Items: Shortsword, Tattered Leather,", random.randint(1,40), "¤")
         print("str: 4")
         print("dex: 4")
         print("int: 4")
@@ -282,7 +332,7 @@ if choice == "8":
         print("notes: skeletons take 2x blunt damage. skeletons are immune to fire damage.")
     if EIM == "Zombies":
         print("Name: Zombie")
-        print("Items:", random.choice(blesscurse), random.choice(item), random.randint(1,40), "Gold Coins")
+        print("Items:", random.choice(blesscurse), random.choice(item), random.randint(1,40), "¤")
         print("str: 6")
         print("dex: 3")
         print("int: 1")
@@ -306,7 +356,7 @@ if choice == "8":
         print("notes: mummies take x2 fire damage")
     if EIM == "Greedy Gnomes":
         print("Name: Greedy Gnome (Dungeon Gnome)")
-        print("Items: Maul, Gambeson,", random.randint(1,40), "Gold Coins")
+        print("Items: Maul, Gambeson,", random.randint(1,40), "¤")
         print("str: 6")
         print("dex: 6")
         print("int: 7")
@@ -354,7 +404,7 @@ if choice == "8":
         print("notes: wolves have a crushing bite, players must make a con check to not have a bone broken when they attack.")
     if EIM == "Cultists":
         print("Name: Demon Cultist")
-        print("Items: Dagger, Magic Robes,", random.randint(1,40), "Gold Coins")
+        print("Items: Dagger, Magic Robes,", random.randint(1,40), "¤")
         print("Spells: Invisibility, Curse Object")
         print("str: 4")
         print("dex: 6")
@@ -379,7 +429,7 @@ if choice == "8":
         print("notes: demons are weak to any attacks by a holy entity.")
     if EIM == "Kobolds":
         print("Name: Kobold")
-        print("Items: Shortsword, Chainmail, Wooden Shield", random.randint(10,15), "Gold Coins")
+        print("Items: Shortsword, Chainmail, Wooden Shield", random.randint(10,15), "¤")
         print("str: 5")
         print("dex: 5")
         print("int: 5")
@@ -389,7 +439,6 @@ if choice == "8":
         print("ac: 6")
         print("dmg: 1d6")
         print("notes: kobolds have a chance (1d6, when 6), to be friendly in a room, willing to trade with the party.")
-    EIM = input("Please input your choice here (Cap. Sensitive):   ")
     if EIM == "Bear":
         print("Name: Cave Bear")
         print("Items: None")
@@ -404,7 +453,7 @@ if choice == "8":
         print("notes: bears have a crushing bite, players must make a con-2 check to not have a bone broken when they attack.")
     if EIM == "Trogbears":
         print("Name: Trogbear")
-        print("Items: Large Maul, Large Dark Wraps,", random.randint(30,100), "Gold Coins")
+        print("Items: Large Maul, Large Dark Wraps,", random.randint(30,100), "¤")
         print("str: 10")
         print("dex: 8")
         print("int: 2")
@@ -416,7 +465,7 @@ if choice == "8":
         print("notes: trogbears are resistant to blade damage.")
     if EIM == "Ogre":
         print("Name: Ogre")
-        print("Items: Large Club, Large Loincloth,", random.randint(8,83), "Gold Coins")
+        print("Items: Large Club, Large Loincloth,", random.randint(8,83), "¤")
         print("str: 11")
         print("dex: 3")
         print("int: 1")
@@ -428,7 +477,7 @@ if choice == "8":
         print("notes: ogres deal 1d6 less damage to small creatures (goblins, hobbits, dwarves, gnomes, etc).")
     if EIM == "Knights":
         print("Name: Knights")
-        print("Items: Longsword, Regal Plate Armor,", random.randint(100,500), "Gold Coins")
+        print("Items: Longsword, Regal Plate Armor,", random.randint(100,500), "¤")
         print("str: 8")
         print("dex: 6")
         print("int: 6")
@@ -512,9 +561,9 @@ if choice == "8":
         print("ac: 6")
         print("dmg: 3d6")
         print("notes: golems only take damage from bludgeoning attacks.")
-    if EIM == "Vampire":
+    if EIM == "Vampires":
         print("Name: Vampire")
-        print("Items: Shortsword, Regal Gambeson,", random.randint(100,500), "Gold Coins")
+        print("Items: Shortsword, Regal Gambeson,", random.randint(100,500), "¤")
         print("str: 8")
         print("dex: 6")
         print("int: 6")
@@ -548,8 +597,8 @@ if choice == "8":
         print("ac: 9")
         print("dmg: 3d6")
         print("notes: blue dragons are smaller, but are impervious to frost damage. they also breathe freezing air, and deal an extra 1d6 frost damage")
-    if EIM == "Silver Dragons":
-        print("Name: Silver Dragon")
+    if EIM == "Grey Dragons":
+        print("Name: Grey Dragon")
         print("Items: None")
         print("str: 11")
         print("dex: 9")
@@ -560,6 +609,11 @@ if choice == "8":
         print("ac: 9")
         print("dmg: 5d6")
         print("notes: grey dragons are very large and very dangerous. they breathe a petrification liquid, that petrifies living things. grey dragons are very weak to fire damage, and take an extra x3 fire damage.")
+    shitfart = input("Input exit to quit, anything else to restart the codex")
+    if shitfart == "exit":
+        quit()
+    if shitfart == "Exit":
+        quit()
 
 if choice == "10":
     print("Are you wanting to view the Dungeons of Deslicar, Dungeons of Doom, Ruins of Alicar (Deslicar, Alicar, Doom)")
@@ -941,10 +995,9 @@ while doom:
         print('0,0,-2')
 
 if choice == "9":
-    print("The shop is selling:", "\n", random.choice(blesscurse), random.choice(item), "for", random.randint(50,500), "Gold Pieces", "\n", random.choice(blesscurse), random.choice(item), "for", random.randint(50,500), "Gold Pieces", "\n", random.choice(blesscurse), random.choice(weapon), "for", random.randint(50,500), "Gold Pieces", "\n", random.choice(blesscurse), random.choice(armor), "for", random.randint(50,500), "Gold Pieces", "\n", random.choice(blesscurse), "Scroll of", random.choice(spellscrolls), "for", random.randint(50,500), "Gold Pieces", "\n", random.choice(blesscurse), "Scroll of", random.choice(spellscrolls), "for", random.randint(50,500), "Gold Pieces",)
+    print("The shop is selling:", "\n", random.choice(blesscurse), random.choice(item), "for", random.randint(50,500), "¤", "\n", random.choice(blesscurse), random.choice(item), "for", random.randint(50,500), "¤", "\n", random.choice(blesscurse), random.choice(weapon), "for", random.randint(50,500), "¤", "\n", random.choice(blesscurse), random.choice(armor), "for", random.randint(50,500), "¤", "\n", random.choice(blesscurse), "Scroll of", random.choice(spellscrolls), "for", random.randint(50,500), "¤", "\n", random.choice(blesscurse), "Scroll of", random.choice(spellscrolls), "for", random.randint(50,500), "¤",)
 
 if menu:
     input("Input anything to close the program   ")
     
-    input("Input anything to close the program   ")
     

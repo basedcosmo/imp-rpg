@@ -3,14 +3,18 @@ import time
 import os
 doom = False
 alicar = False
+deslicar = False
 
-print("Are you wanting to view the Dungeons of Deslicar or Ruins of Alicar (Deslicar, Alicar)")
+print("Are you wanting to view the Dungeons of Deslicar, Dungeons of Doom, Ruins of Alicar (Deslicar, Alicar, Doom)")
 selection = input("# ")
 if selection == "Deslicar":
-    doom = True
+    deslicar = True
 if selection == "Alicar":
     alicar = True
-while doom:
+if selection == "Doom":
+    doom = True
+
+while deslicar:
     print("please input coordinates of the map in the dungeon (format is x,y,z, e.g. first room is 0,0,-1)")
 
     g = input("coords:  ")
@@ -48,7 +52,7 @@ while doom:
         print("This room also has three goblins and a chest in it")
         print('-1,-2,-1')
 
-    if g == "-1,-2,-1":
+    if g == "-2,-2,-1":
         print(" ╔═══════╗")
         print(" ║·······║")
         print(" ║·»·····█")
@@ -106,7 +110,7 @@ while doom:
         print(" ╚═█════╝")
         print("This room is 15 feet by 30 feet and has one door")
         print("This room also has three kobolds and a downwards staircase in it")
-        print('-1,-1,-2')
+        print('-1,-2,-2')
 
     if g == "0,0,-3":
         print(" ╔════█═╗")
@@ -146,7 +150,7 @@ while doom:
         print(" ╚════█══╝")
         print("This room is 15 feet by 35 feet and has one door")
         print("This room also has a stream of flowing water and a pedestal holding an amulet on it in it")
-        print("1,0,-3")
+        print("0,2,-3")
 
 while alicar:
     print("please input coordinates of the map in the ruins (format is x,y,z, e.g. starting room is 0,0,0)")
@@ -208,7 +212,7 @@ while alicar:
         print(" ╚█════════╝ ")
         print("This room is 5 feet by 45 feet and has one door")
         print("This room also has nothing in it")
-        print("1,0,-1")
+        print("1,1,-1")
     if g == "1,2,-1":
         print(" ╔══█═════╗")
         print(" ║······■·║")
@@ -264,5 +268,118 @@ while alicar:
         print("This room also has a pedestal with Gungnir, Spear of the All-Father on it in it")
         print("0,0,-3")
 
+while doom:
+    print("please input coordinates of the map in the dungeon (format is x,y,z, e.g. first room is 0,0,-1)")
+    g = input("coords:  ")
+    os.system('cls')
+    
+    if g == "0,0,-1":
+        print(" ╔══════╗")
+        print(" ║«·····║")
+        print(" ║······█")
+        print(" ║······║")
+        print(" ║······║")
+        print(" ╚═█════╝")
+        print("This room is 20 feet by 30 feet and has one door")
+        print("This room also has an upwards staircase inside of it")
+        print('0,0,-1')
+    
+    if g == "0,-1,-1":
+        print(" ╔══█═══╗")
+        print(" ║····o·║")
+        print(" ║······║")
+        print(" ║·····o║")
+        print(" ║···o··║")
+        print(" ╚═█════╝")
+        print("This room is 20 feet by 30 feet and has one door")
+        print("This room also has three orcs in it")
+        print('0,-1,-1')
+    
+    if g == "0,-2,-1":
+        print(" ╔════█═╗")
+        print(" ║·····o║")
+        print(" ║o·····║")
+        print(" ║······║")
+        print(" ║···o··║")
+        print(" ╚█═════╝")
+        print("This room is 20 feet by 30 feet and has one door")
+        print("This room also has three orcs in it")
+        print('0,-2,-1')
+    
+    if g == "0,-3,-1":
+        print(" ╔═════█╗")
+        print(" ║gg····║")
+        print(" ║·g····║")
+        print(" ║······║")
+        print(" ║···g·g║")
+        print(" ╚══════╝")
+        print("This room is 20 feet by 30 feet and has one door")
+        print("This room also has five goblins in it")
+        print('0,-3,-1')          
+    
+    if g == "1,0,-1":
+        print(" ╔═══════╗")
+        print(" ║·p·····█")
+        print(" █·······║")
+        print(" ║·······║")
+        print(" ╚═══════╝")
+        print("This room is 15 feet by 35 feet and has one door")
+        print("This room also has a pedestal with a fake amulet of yendor on it in it")
+        print('1,0,-1')
+
+    if g == "2,0,-1":
+        print(" ╔══█════╗")
+        print(" ║s··ss··║")
+        print(" ║s·····s║")
+        print(" █·····ss║")
+        print(" ╚═══════╝")
+        print("This room is 15 feet by 35 feet and has one door")
+        print("This room also has seven slimes in it")
+        print('2,0,-1')
+   
+    if g == "2,1,-1":
+        print(" ╔═══════╗")
+        print(" ║d······█")
+        print(" ║·······║")        
+        print(" ║·······║")
+        print(" ║·······║")
+        print(" ║·······║")
+        print(" ╚═══█═══╝")
+        print("This room is 25 feet by 35 feet and has one door")
+        print("This room also has a Silver Dragon in it")
+        print('2,1,-1')
+    
+    if g == "3,1,-1":
+        print(" ╔═══════╗")
+        print(" ║·······║")
+        print(" ║·······║")        
+        print(" █·······║")
+        print(" ║·······║")
+        print(" ║·······║")
+        print(" ╚═══█═══╝")
+        print("This room is 25 feet by 35 feet and has one door")
+        print("This room also has nothing in it")
+        print('3,1,-1')
+
+    if g == "3,0,-1":
+        print(" ╔═══█═══╗")
+        print(" ║·······║")
+        print(" ║■······║")        
+        print(" ║·······║")
+        print(" ║·······║")
+        print(" ║····»··║")
+        print(" ╚═══════╝")
+        print("This room is 25 feet by 35 feet and has one door")
+        print("This room also has a chest and a downwards staircase in it")
+        print('3,0,-1')
+    if g == "3,0,-1":
+        print(" ╔═══════╗")
+        print(" ║■······║")
+        print(" ║·······█")        
+        print(" ║····«··║")
+        print(" ╚═══════╝")
+        print("This room is 25 feet by 35 feet and has one door")
+        print("This room also has a chest and an upwards staircase in it")
+        print('0,0,-2')
 
 input("Exiting Program...   ")

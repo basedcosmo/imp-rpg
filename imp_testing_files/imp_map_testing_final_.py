@@ -8,11 +8,13 @@ print("Are you wanting to view the Dungeons of Deslicar or Ruins of Alicar (Desl
 selection = input("# ")
 if selection == "Deslicar":
     doom = True
-
+if selection == "Alicar":
+    alicar = True
 while doom:
     print("please input coordinates of the map in the dungeon (format is x,y,z, e.g. first room is 0,0,-1)")
 
     g = input("coords:  ")
+    os.system('cls')
 
     if g == "-1,0,-1":
         print(" ╔══════╗")
@@ -147,6 +149,65 @@ while doom:
         print("1,0,-3")
 
 while alicar:
-    print('Dungeon not Finished')
-    alicar = False
+    print("please input coordinates of the map in the ruins (format is x,y,z, e.g. starting room is 0,0,0)")
+
+    g = input("coords:  ")
+    os.system('cls')
+
+    if g == "0,0,0":
+        print(" ╔══════════════════╗")
+        print(" ║·········A········║")
+        print(" ║··················█")
+        print(" ║···»··············║")
+        print(" ║·················╔╝")
+        print(" ╚═════════════════╝")
+        print("This room is 20 feet by 90 feet and has one door, which acts as the entrace to the dungeon")
+        print("This room also has an Ancient Guardian and a downwards staircase in it")
+        print('0,0,0')
+    
+    if g == "0,0,-1":
+        print(" ╔════════════════╗")
+        print(" ║···········«····║")
+        print(" ║····K···········█")
+        print(" ║················║")
+        print(" ╚═══════█════════╝")
+        print("This room is 15 feet by 80 feet and has two doors")
+        print("This room also has a knight and an upwards staircase in it")
+        print('0,0,-1')
+
+    if g == "0,-1,-1":
+        print(" ╔═█══════════╗")
+        print(" ║········K···║")
+        print(" ║············║")
+        print(" ║···K········║")
+        print(" ╚═══════█════╝")
+        print("This room is 15 feet by 60 feet and has two doors")
+        print("This room also has two knights in it")
+        print("0,-1,-1")
+    if g == "0,-2,-1":
+        print(" ╔═══════════╗")
+        print(" ║··K·····K··║")
+        print(" ║···········║")
+        print(" ║···K·······║")
+        print(" ╚═══════█═══╝")
+        print("This room is 15 feet by 60 feet and has two doors")
+        print("This room also has three knights in it")
+        print("0,-2,-1")
+
+    if g == "1,0,-1":
+        print(" ╔═══█═════╗")
+        print(" █·········║")
+        print(" ║·K····K··║")
+        print(" ╚═════════╝ ")
+        print("This room is 10 feet by 45 feet and has one door")
+        print("This room also has two knights in it")
+        print("1,0,-1")
+    if g == "1,1,-1":
+        print(" ╔═█═══════╗")
+        print(" ║·········║")
+        print(" ╚════════█╝ ")
+        print("This room is 5 feet by 45 feet and has one door")
+        print("This room also has two knights in it")
+        print("1,0,-1")
+
 input("Exiting Program...   ")

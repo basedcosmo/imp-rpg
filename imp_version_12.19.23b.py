@@ -33,7 +33,7 @@ cursegen2 = random.randint(1, 3)
 cursegen3 = random.randint(1, 3)
 randloot = random.randint(1, 3)
 if menu:
-    print("System made by Cosmo")
+    print("System made by Cosmo and amarvin")
     print(" ")
     print("1: Begin Generatorizer")
     print("2: Infomation about the Generatorizer")
@@ -48,13 +48,13 @@ if menu:
     choice = input("Input Number Choice: ")
     if choice == "1":
         menu = False
-        print("Warning! If you dont choose a listed class/race name, that voids the benifits of the class/race!")
+        print("Warning! If you dont choose a listed class/race name, that voids the benifits of the class/race!  ")
         strength = random.randint(3, 8)
         constitution = random.randint(3, 10)
         dexterity = random.randint (3, 8)
         intelligence = random.randint (3, 8)
         name = input("What is your name?")
-        cclass = input("What is your Character Class? (Fighter, Wizard, Cleric, Thief, Adventurer, Sorcerer, Hunter, Paladin)")
+        cclass = input("What is your Character Class? (Fighter, Wizard, Cleric, Thief, Adventurer, Sorcerer, Hunter, Paladin)  ")
         if cclass == "Fighter":
             strength + 2
         elif cclass == "Wizard":
@@ -80,10 +80,10 @@ if menu:
             dexterity + 1
             constitution + 1
         if cclass == "Thief":
-            race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome, Hobbit)")
+            race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome, Hobbit)  ")
         if cclass == "Adventurer":
-            race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome, Hobbit)")
-        else: race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome)")
+            race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome, Hobbit)  ")
+        else: race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome)  ")
         if race == "Human":
             racialbonus = "no racial bonus"
         elif race == "Half-Orc":
@@ -103,7 +103,7 @@ if menu:
             racialbonus = "hobbit dexterity"
             racialspecial = "Hobbits are locked to Thieves and Adventurers, if you arent a thief or adventurer, you must make a new character."
 
-        print("You are", name, "\033 You are a", race, "\033" " You are a", cclass, "\033", racialspecial, "\033", classspecial)
+        print("You are", name, "× You are a", race, "×" " You are a", cclass, "×", racialspecial, "×", classspecial)
         print("Your full character name is:", name + " the", race, cclass)
         if cclass == "Wizard":
             print("Your starting spells are:", random.choice(wizardspells) + ",", random.choice(wizardspells) + ",", random.choice(wizardspells))
@@ -132,17 +132,16 @@ if menu:
         hp = constitution
         mana = intelligence
         ac = dexterity
-        print("hp:", hp + 6)
+        print("hp:", hp + 6, "/", hp + 6)
         if mana >= 9:
             mana = 8
-        print("mana:", mana)
+        print("mana:", mana, "/", mana)
         if ac > 16:
             ac = 15
         if ac <= 4:
             ac = 4
         print("ac:", ac + 1)
-        print("The system will not automatically restart it's self after this. Please restart it")
-
+        input("")
 if choice == "2":
     menu = False
     print("Hello! The Generatorizer is a basic character generator system for any basic roleplaying game,")

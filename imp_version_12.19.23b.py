@@ -111,8 +111,10 @@ if menu:
             print("Your starting spells are:", random.choice(clericspells) + ",", random.choice(clericspells))
         if cclass == "Sorcerer":
             print("Your starting spells are:", random.choice(wizardspells) + ",", random.choice(wizardspells) + ",", random.choice(wizardspells) + ",", random.choice(wizardspells))
+        if cclass == "Paladin":
+            print("Your starting spells are:", random.choice(paladinspells) + ",", random.choice(paladinspells) + ",", random.choice(paladinspells))
         if cclass == "Fighter":
-            print("Your starting items are: Blessed +1 Longsword, Uncursed Warrior's Tunic, Uncursed Potion of Healing")
+            print("Your starting items are: Blessed +1 Longsword, Uncursed Wooden Shield, Uncursed Warrior's Tunic, Uncursed Potion of Healing")
         if cclass == "Wizard":
             print("Your starting items are: Uncursed Staff, Uncursed Spellbook, Uncursed Magic Robes, Uncursed Potion of Mana Rejuvination, Blessed +1 Ring of Magic Resistance")
         if cclass == "Cleric":
@@ -125,6 +127,8 @@ if menu:
             print("Your starting items are: Uncursed Potion of Healing,", "Blessed +1 " + random.choice(weapon) + ",", "Blessed +1 " + random.choice(armor))
         if cclass == "Hunter":
             print("Your starting items are: Uncursed Crossbow, 20 Uncursed Bolts, Uncursed Beartrap, Uncursed Potion of Haste")
+        if cclass == "Paladin":
+            print("Your starting items are: Blessed +1 Longsword, Uncursed Plate Armor, Uncursed Spellbook")
         print("strength:", strength)
         print("dexterity:", dexterity)
         print("intelligence:", intelligence)
@@ -940,5 +944,7 @@ if choice == "9":
     print("The shop is selling:", "\n", random.choice(blesscurse), random.choice(item), "for", random.randint(50,500), "Gold Pieces", "\n", random.choice(blesscurse), random.choice(item), "for", random.randint(50,500), "Gold Pieces", "\n", random.choice(blesscurse), random.choice(weapon), "for", random.randint(50,500), "Gold Pieces", "\n", random.choice(blesscurse), random.choice(armor), "for", random.randint(50,500), "Gold Pieces", "\n", random.choice(blesscurse), "Scroll of", random.choice(spellscrolls), "for", random.randint(50,500), "Gold Pieces", "\n", random.choice(blesscurse), "Scroll of", random.choice(spellscrolls), "for", random.randint(50,500), "Gold Pieces",)
 
 if menu:
+    input("Input anything to close the program   ")
+    
     input("Input anything to close the program   ")
     

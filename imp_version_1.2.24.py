@@ -1,16 +1,18 @@
 import time
 import random
 import os
+import math
+spec = ""
 #You can take the code, and share it as long as you ask before you do and dont promote it as your own code, and dont say you created it either. Contact me at basedcosmo on discord.
 wizardspells = ["Magic Missile", "Fireball", "Firebolt", "Arcane Light", "Invisibility", "Lightning Bolt", "Chain Lightning", "Locate Object", "Lead to Gold", "Darkvision", "Enchant Weapon", "Haste", "Arcane Shield", "Identify", "Dispell Curse"]
 sorcererspells =  ["Magic Missile", "Fireball", "Firebolt", "Arcane Light", "Invisibility", "Lightning Bolt", "Chain Lightning", "Locate Object", "Darkvision", "Enchant Weapon", "Haste", "Arcane Shield", "Ignite Weapon", "Cure Drunkard"]
 clericspells = ["Holy Light", "Turn Undead", "Minor Healing", "Major Healing", "Prayer of Mass Healing", "Cure Wounds", "Cure Sickness", "Bless Person", "Protection", "Prayer", "Magic Missile"]
 paladinspells = ["Holy Light", "Turn Undead", "Minor Healing", "Major Healing", "Bless Person", "Protection", "Thunderous Smite", "Holy Smite", "Searing Smite", "Insightful Question", "Dispell Curse"]
 spellscrolls = ["Magic Missile", "Fireball", "Firebolt", "Arcane Light", "Invisibility", "Lightning Bolt", "Chain Lightning", "Locate Object", "Lead to Gold", "Darkvision", "Enchant Weapon", "Haste", "Arcane Shield", "Holy Light", "Turn Undead", "Minor Healing", "Major Healing", "Bless Person", "Protection", "Smite Undead", "Prayer", "Magic Missile", "Identify", "Dispell Curse", "Speak to Animals"]
-weapon = ["Shortsword", "Longsword", "Greatsword", "Club", "Mace", "Maul", "Druidic Staff", "Spellbook", "Shortbow", "Longbow", "Crossbow", "Dagger", "Rapier", "Lute", "Drum and Drumsticks", "Gauntlets", "Crystal Ball", "Hatchet", "Waraxe", "Danish Axe"]
+weapon = ["Shortsword (1d6)", "Longsword (2d6)", "Greatsword (3d6)", "Club (1d6)", "Mace (2d6)", "Maul (3d6)", "Druidic Staff (1d6)", "Spellbook (0)", "Shortbow (1d6)", "Longbow (2d6)", "Hand Crossbow (1d6)", "Light Crossbow (2d6)", "Arbalest (3d6)", "Dagger (1d6)", "Rapier (1d6)", "Lute (0)", "Lyre (0)", "Crystal Ball (0)", "Hatchet (1d6)", "Waraxe (2d6)", "Danish Axe (3d6)", "Goedendag (1d6)", "Spear (2d6)", "Lance (2d6)", "Quarterstaff (1d6)", "Halberd (3d6)", "Prybar (1d6)"]
 items = "Nothing"
 item = ["Torch", "Glasses", "Mirror", "Holy Water", "Holy Symbol", "Beartrap", "Thief's Tools", "Map", "Compass", "Lead Fishing Weight", "Pint of Ale", "Glass of Wine", "Horn of Mead", "Lead Boots", "Raincoat", "Light Cloak", "Fake Amulet of Yendor"]
-armor = ["Clothing", "Gambeson", "Leather Armor", "Plate Armor", "Magical Robes", "Dark Wraps", "Chainmail", "Wooden Shield", "Copper Shield", "Iron Shield"]
+armor = ["Clothing (0)", "Gambeson (1)", "Leather Armor (2)", "Plate Armor (4)", "Magical Robes (0)", "Dark Wraps (0)", "Chainmail (3)", "Wooden Shield (1)", "Iron Shield (1)"]
 blesscurse = ["-3 Cursed", "-2 Cursed", "-1 Cursed", "Uncursed", "Uncursed", "Uncursed", "Uncursed", "Uncursed", "+1 Blessed", "+2 Blessed", "+3 Blessed", "+4 Blessed"]
 ttype = ["Golden", "Silver", "Bronze", "Iron", "Copper"]
 treasure = ["Chalice", "Mug", "Necklace", "Monacle", "Bowl", "Urn", "Bar", "Medallion"]
@@ -18,8 +20,10 @@ jewels = ["Necklace", "Ring", "Cape", "Helmet", "Gloves", "Toering", "Belt"]
 jtype = ["Intellect", "Vigor", "Vitality", "Speed", "Darkvision", "Binding", "Blinding", "Slowness", "Light", "Springing", "Reading", "Purification", "Chastity", "Disintegration"]
 enemy = ["Orcs", "Goblins", "Skeletons", "Zombies", "Mummies", "Slimes", "Giant Bats", "Wolves", "Greedy Gnomes", "Cultists", "Demons", "Kobolds", "Bears", "Trogbears", "Centaurs", "Ogres", "Knights", "Minotaurs", "Ettins", "Incubi", "Succubi", "Trolls", "Golems", "Vampires", "Grey Dragons", "Blue Dragons", "Silver Dragons"]
 Wtype = ["Sword", "Axe", "Maul", "Bow", "Staff"]
-Weffect = ["Mjolnir, Hammer of Lighting", "Sumarbrander, Sword of Summer", "Gungnir, Spear of The All-Father", "Hrunting, the Blood Tempered Blade", "Sharur, the Smasher of Thousands", "Dyrnwyn, Blade of Fire", "Excalibur, the Holy Blade", "Gram, Blade of the Dragon Slayer", "Sting, the Orc Slayer", "Skofnung, King's Blade", "Cinder, the Scalding Halberd", "Throthnur, the Elven Bow of Truth", "Fulgor, Lightning of the North", "Aegis, the Speaking Shield", "Nipalan, the Pushing Arrow", "Mustaine, Mettalic Aerodynamic shirt", "Billiam, Stanley's Bottomless Bucket"]
-print("character generatorizer")
+Weffect = ["Mjolnir, Hammer of Lighting (3d6, +1d6 Shock)", "Sumarbrander, Sword of Summer (3d6, Sentient)", "Gungnir, Spear of The All-Father (2d6, Always hits the enemy)", "Hrunting, the Blood Tempered Blade (3d6)", "Sharur, the Smasher of Thousands (3d6, Sentient)", "Dyrnwyn, Blade of Fire (3d6, +1d6 Flame)", "Excalibur, the Holy Blade (3d6, +1d6 Holy)", "Balmung, Blade of the Dragon Slayer (2d6, +3d6 against dragons)", "Sting, the Orc Slayer (3d6, Glows in presense of orcs)", "Skofnung, King's Blade (3d6, enemy loses 1 AC on a hit)", "Cinder, the Scalding Halberd (2d6, 2d6 Flame)", "Throthnur, the Elven Bow of Truth (4d6)", "Fulgor, Lightning of the North (3d6, +1d6 Shock)", "Aegis, the Speaking Shield (+2 AC, Sentient)", "Nipalan, the Pushing Arrow (3d6, enemy is pushed back)", "Fethan, the ever-inked feather", "Nipithir, Wand of unknown Magick"]
+print("Welcome to the Character Generator! \n \n \n")
+advanced = False
+basic = True
 name = "None"
 race = "None"
 cclass = "None"
@@ -76,70 +80,171 @@ if menu:
         constitution = random.randint(3, 10)
         dexterity = random.randint (3, 8)
         intelligence = random.randint (3, 8)
-        name = input("What is your name?")
-        cclass = input("What is your Character Class? (Fighter, Wizard, Cleric, Thief, Adventurer, Sorcerer, Hunter, Paladin)  ")
-        if cclass == "Fighter":
-            strength + 2
-        elif cclass == "Wizard":
-            intelligence + 2
-            classspecial = "You are a spellcaster."
-        elif cclass == "Sorcerer":
-            intelligence + 1
-            classspecial = "You are a spellcaster"
-        elif cclass == "Cleric":
-            intelligence + 1
-            classspecial = "You are a spellcaster."
-        elif cclass == "Thief":
-            dexterity + 2
-        elif cclass == "Adventurer":
-            constitution + 1
-            classspecial = "You start with random items, and loot."
-            items = (random.choice(weapon), random.choice(armor), "Scroll of " + random.choice(spellscrolls))
-        elif cclass == "Paladin":
-            strength + 1
-            constitution + 1
-            classspecial = "You are a spellcaster."
-        elif cclass == "Hunter":
-            dexterity + 1
-            constitution + 1
-        if cclass == "Thief":
-            race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome, Hobbit)  ")
-        if cclass == "Adventurer":
-            race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome, Hobbit)  ")
-        if cclass == "Fighter":
-            race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome)  ")
-        if cclass == "Wizard":
-            race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome)  ")
-        if cclass == "Cleric":
-            race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome)  ")
-        if cclass == "Sorcerer":
-            race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome)  ")
-        if cclass == "Hunter":
-            race = input("What is your race? (Half-Orc, Half-Elf, Elf)  ")
-        if cclass == "Paladin":
-            race = input("What is your race? (Human, Dwarf)  ")
-        if race == "Human":
-            racialbonus = "no racial bonus"
-        elif race == "Half-Orc":
-            racialbonus == "orcish strength"
-            strength = strength + 2
-        elif race == "Elf":
-            racialbonus == "elvish dexterity"
-            dexterity = dexterity + 1
-        elif race == "Half-Elf":
-            racialbonus == "druidic instincts"
-            racialspecial == "gain the spell 'Speak to Animals'"
+        name = input("What is your name?  ")
+        #Base: Fighter, Wizard, Cleric, Thief, Adventurer, Sorcerer, Hunter
+        #Optional: Gunslinger, Beserker, Paladin, Knight
+        classlistselect = input("Are you using the extra character list? (Y/N)  ")
+        if classlistselect == "Y":
+            advanced = True
+            basic = False
+        if classlistselect == "y":
+            advanced = True
+            basic = False
+        if classlistselect == "N":
+            basic = True
+            advanced = False
+        if classlistselect == "n":
+            basic = True
+            advanced = False
+        while basic:
+                cclass = input("What is your Character Class? (Fighter, Wizard, Cleric, Thief, Adventurer, Sorcerer, Hunter)  ")
+                
+                if cclass == "Fighter":
+                    strength + 2
+                elif cclass == "Wizard":
+                    intelligence + 2
+                    classspecial = "You are a spellcaster."
+                elif cclass == "Sorcerer":
+                    intelligence + 1
+                    classspecial = "You are a spellcaster"
+                elif cclass == "Cleric":
+                    intelligence + 1
+                    classspecial = "You are a spellcaster."
+                elif cclass == "Thief":
+                    dexterity + 2
+                elif cclass == "Adventurer":
+                    constitution + 1
+                    classspecial = "You start with random items, and loot."
+                    items = (random.choice(weapon), random.choice(armor), "Scroll of " + random.choice(spellscrolls))
+                elif cclass == "Paladin":
+                    strength + 1
+                    constitution + 1
+                    classspecial = "You are a spellcaster."
+                elif cclass == "Hunter":
+                    dexterity + 1
+                    constitution + 1
+                if cclass == "Thief":
+                    race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome, Hobbit)  ")
+                if cclass == "Adventurer":
+                    race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome, Hobbit)  ")
+                if cclass == "Fighter":
+                    race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome)  ")
+                if cclass == "Wizard":
+                    race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome)  ")
+                if cclass == "Cleric":
+                    race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome)  ")
+                if cclass == "Sorcerer":
+                    race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome)  ")
+                if cclass == "Hunter":
+                    race = input("What is your race? (Half-Orc, Half-Elf, Elf)  ")
+                if cclass == "Paladin":
+                   race = input("What is your race? (Human, Dwarf)  ")
+                if race == "Human":
+                    racialbonus = "no racial bonus"
+                elif race == "Half-Orc":
+                    racialbonus == "orcish strength"
+                    strength = strength + 2
+                elif race == "Elf":
+                    racialbonus == "elvish dexterity"
+                    dexterity = dexterity + 1
+                elif race == "Half-Elf":
+                    racialbonus == "druidic instincts"
+                    racialspecial == "gain the spell 'Speak to Animals'"
 
-        elif race == "Dwarf":
-            racialbonus == "dwarven darkvision"
-            racialspecial = "You have Darkvision, 60 feet."
-        elif race == "Gnome":
-            racialbonus == "can sense gems"
-            racialspecial = "You can sense gems from 60 feet away."
-        elif race == "Hobbit":
-            dexterity + 2
-            racialbonus = "hobbit dexterity"
-            racialspecial = "Hobbits are locked to Thieves and Adventurers, if you arent a thief or adventurer, you must make a new character."
+                elif race == "Dwarf":
+                    racialbonus == "dwarven darkvision"
+                    racialspecial = "You have Darkvision, 60 feet."
+                elif race == "Gnome":
+                    racialbonus == "can sense gems"
+                    racialspecial = "You can sense gems from 60 feet away."
+                elif race == "Hobbit":
+                    dexterity + 2
+                    racialbonus = "hobbit dexterity"
+                    racialspecial = "Hobbits are locked to Thieves and Adventurers, if you arent a thief or adventurer, you must make a new character."
+                basic = False
+        
+        while advanced:
+                cclass = input("What is your Character Class? (Fighter, Wizard, Cleric, Thief, Adventurer, Sorcerer, Hunter, Gunslinger, Beserker, Paladin, Knight)  ")
+                if cclass == "Fighter":
+                    strength + 2
+                elif cclass == "Wizard":
+                    intelligence + 2
+                    classspecial = "You are a spellcaster."
+                elif cclass == "Sorcerer":
+                    intelligence + 1
+                    classspecial = "You are a spellcaster"
+                elif cclass == "Cleric":
+                    intelligence + 1
+                    classspecial = "You are a spellcaster."
+                elif cclass == "Thief":
+                    dexterity + 2
+                elif cclass == "Adventurer":
+                    constitution + 1
+                    classspecial = "You start with random items, and loot."
+                    items = (random.choice(weapon), random.choice(armor), "Scroll of " + random.choice(spellscrolls))
+                elif cclass == "Paladin":
+                    strength + 1
+                    constitution + 1
+                    classspecial = "You are a spellcaster."
+                elif cclass == "Hunter":
+                    dexterity + 1
+                    constitution + 1
+                if cclass == "Thief":
+                    race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome, Hobbit)  ")
+                if cclass == "Adventurer":
+                    race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome, Hobbit)  ")
+                if cclass == "Fighter":
+                    race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome)  ")
+                if cclass == "Wizard":
+                    race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome)  ")
+                if cclass == "Cleric":
+                    race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome)  ")
+                if cclass == "Sorcerer":
+                    race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome)  ")
+                if cclass == "Hunter":
+                    race = input("What is your race? (Half-Orc, Half-Elf, Elf)  ")
+                if cclass == "Paladin":
+                   race = input("What is your race? (Human, Dwarf)  ")
+                if cclass == "Gunslinger":
+                    race = "Human"
+                    racialbonus = "no racial bonus"
+                    classspecial = "With any ranged weapon, you can make an int check to target an organ or vital piece of their body. This includes fingers, eyeballs, and other things of the sort."
+                    spec = "Leadership: +1"
+                if cclass == "Berserker":
+                    race == "Half-Orc"
+                    strength = strength + 2
+                    racialbonus == "orcish strength"
+                    classspecial = "When attacked, you can roll a Dex check to riposte and deal an instant crit"
+                    spec = "Intimidation: +1"
+                if cclass == "Knight":
+                    race == "Human"
+                    racialbonus = "no racial bonus"
+                    classspecial = "You must abide by all laws, incite peace, and vanquish any evil on sight."
+                    spec = "Charisma: +1"
+                    spec = True
+                if race == "Human":
+                    racialbonus = "no racial bonus"
+                elif race == "Half-Orc":
+                    racialbonus == "orcish strength"
+                    strength = strength + 2
+                elif race == "Elf":
+                    racialbonus == "elvish dexterity"
+                    dexterity = dexterity + 1
+                elif race == "Half-Elf":
+                    racialbonus == "druidic instincts"
+                    racialspecial == "gain the spell 'Speak to Animals'"
+
+                elif race == "Dwarf":
+                    racialbonus == "dwarven darkvision"
+                    racialspecial = "You have Darkvision, 60 feet."
+                elif race == "Gnome":
+                    racialbonus == "can sense gems"
+                    racialspecial = "You can sense gems from 60 feet away."
+                elif race == "Hobbit":
+                    dexterity + 2
+                    racialbonus = "hobbit dexterity"
+                    racialspecial = "Hobbits are locked to Thieves and Adventurers, if you arent a thief or adventurer, you must make a new character."
+                advanced = False
 
         os.system('cls')
         print("You are", name, "× You are a", race, "×" " You are a", cclass, "×", racialspecial, "×", classspecial)
@@ -155,28 +260,35 @@ if menu:
         if race == "Half-Elf":
             print("You have an additional race inherant spell: Speak to Animals")
         if cclass == "Fighter":
-            print("Your starting items are: Blessed +1 Longsword, Uncursed Wooden Shield, Uncursed Warrior's Tunic, Uncursed Potion of Healing")
+            print("Your starting items are: Blessed +1 Longsword (2d6), Uncursed Wooden Shield (0), Uncursed Clothing (0), Uncursed Potion of Healing")
         if cclass == "Wizard":
-            print("Your starting items are: Uncursed Staff, Uncursed Spellbook, Uncursed Magic Robes, Uncursed Potion of Mana Rejuvination, Blessed +1 Ring of Magic Resistance")
+            print("Your starting items are: Uncursed Staff (1d6), Uncursed Spellbook (0), Uncursed Magic Robes (0), Uncursed Potion of Mana Rejuvination, Blessed +1 Ring of Magic Resistance")
         if cclass == "Cleric":
-            print("Your starting items are: Uncursed Mace, Uncursed Spellbook, Uncursed Magic Robes, Blessed +2 Holy Symbol")
+            print("Your starting items are: Uncursed Mace (1d6), Uncursed Spellbook (0), Uncursed Magic Robes (0), Blessed +2 Holy Symbol")
         if cclass == "Thief":
-            print("Your starting items are: Uncursed Dagger, Uncursed Thieves Guild Attire, Uncursed Thief's Tools")
+            print("Your starting items are: Uncursed Dagger (1d6), Uncursed Dark Wraps (0), Uncursed Thief's Tools")
         if cclass == "Sorcerer":
-            print("Your starting items are: Uncursed Shortsword, Uncursed Crystal Ball, Uncursed Magic Robes")
+            print("Your starting items are: Uncursed Shortsword (1d6), Uncursed Crystal Ball (0), Uncursed Magic Robes (0)")
         if cclass == "Adventurer":
             print("Your starting items are: Uncursed Potion of Healing,", "Blessed +1 " + random.choice(weapon) + ",", "Blessed +1 " + random.choice(armor))
         if cclass == "Hunter":
-            print("Your starting items are: Uncursed Crossbow, 20 Uncursed Bolts, Uncursed Beartrap, Uncursed Potion of Haste")
+            print("Your starting items are: Uncursed Light Crossbow (2d6), 20 Uncursed Bolts, Uncursed Beartrap, Uncursed Potion of Haste")
         if cclass == "Paladin":
-            print("Your starting items are: Blessed +1 Longsword, Uncursed Plate Armor, Uncursed Spellbook")
+            print("Your starting items are: Blessed +1 Longsword (2d6), Uncursed Plate Armor (4), Uncursed Spellbook (0)")
+        if cclass == "Gunslinger":
+            print("Your starting items are: Uncursed Revolver (2d6), 24 Uncursed Bullets, Uncursed Western Hat (0), Uncursed Clothes (0), Uncursed Compass")
+        if cclass == "Knight":
+            print("Your starting items are: Blessed +1 Lance (2d6), Uncursed Plate Armor (4), Uncursed Banner (1d6), Blessed +5 Book of Law")
+        if cclass == "Berserker":
+            print("Your starting items are: Uncursed Danish Axe (3d6), Uncursed Barbarian Wraps (-1), Uncursed Lyre")
+        
         print("strength:", strength)
         print("dexterity:", dexterity)
         print("intelligence:", intelligence)
         print("constitution:", constitution)
         hp = constitution
         mana = intelligence
-        ac = dexterity
+        ac = dexterity / 2
         print("hp:", hp + 6, "/", hp + 6)
         if mana >= 9:
             mana = 8
@@ -186,6 +298,9 @@ if menu:
         if ac <= 4:
             ac = 4
         print("ac:", ac + 1)
+        math.floor(ac)
+        print(spec)
+        input("")
 
 if choice == "2":
     menu = False
@@ -1250,6 +1365,18 @@ while doom:
 if choice == "9":
     print("The shop is selling:", "\n", random.choice(blesscurse), random.choice(item), "for", random.randint(50,500), "¤", "\n", random.choice(blesscurse), random.choice(item), "for", random.randint(50,500), "¤", "\n", random.choice(blesscurse), random.choice(weapon), "for", random.randint(50,500), "¤", "\n", random.choice(blesscurse), random.choice(armor), "for", random.randint(50,500), "¤", "\n", random.choice(blesscurse), "Scroll of", random.choice(spellscrolls), "for", random.randint(50,500), "¤", "\n", random.choice(blesscurse), "Scroll of", random.choice(spellscrolls), "for", random.randint(50,500), "¤",)
 
+#Base: Fighter, Wizard, Cleric, Thief, Adventurer, Sorcerer, Hunter
+#Optional: Gunslinger, Beserker, Paladin, Knight
+if choice == "11":
+    print("Do you want:\n1: Base Classes\nor\n2: Optional Classes")
+    input("#")
+    if choice == "1":
+        print("Base: Fighter, Wizard, Cleric, Thief, Adventurer, Sorcerer, Hunter")
+    if choice == "2":
+        print("Optional: Gunslinger, Beserker, Paladin, Knight")
+        print("These classes might come with items that cannot be generated elsewhere")
+    else:
+        print("Ask Cosmo to add any extra classes to the optional classes list!")
 if menu:
     input("Input anything to close the program   ")
     

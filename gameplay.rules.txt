@@ -1,0 +1,6 @@
+Most rolls need to be *under* the stat number. For example, a strength of 7 and roll of 3 succeeds.
+During combat, you must make a: ST check for Melee, DX check for Ranged, IQ check for Spells
+The enemy must make a check *under* their AC
+Use the IMP Generators for ease of use
+Turn order goes in table order
+Have Fun! (Dying is part of the game)

@@ -3,9 +3,10 @@ import random
 import os
 import math
 goblin = False
+atlas = False
 spec = ""
 #You can take the code, and share it as long as you ask before you do and dont promote it as your own code, and dont say you created it either. Contact me at basedcosmo on discord.
-pe = ["Healing", "Invisibility", "Strength", "Fire Resistance", "Projectile Resistance", "Truesight", "Darkvision", "Haste", "Poison", "Disintegration", "Booze", "Fruit Juice", "Unpetrification", "Sickness", "Ignite Self"]
+pe = ["Healing", "Mana Regeneration", "Invisibility", "Strength", "Fire Resistance", "Projectile Resistance", "Truesight", "Darkvision", "Haste", "Poison", "Disintegration", "Booze", "Fruit Juice", "Unpetrification", "Sickness", "Ignite Self", "Instant Death", "Teleportation", "Water"]
 pc = ["Red", "Green", "Blue", "Yellow", "Purple", "Purple-Red", "White", "Blue-Green", "Light Blue", "Dark Green", "Neon Yellow", "Red", "Yellow", "Lime green", "Green", "Sky blue", "Crimson", "Grey", "Purple", "Mustard", "Violet", "Magenta", "Coral", "Brown", "Pink", "Tan"]
 wizardspells = ["Magic Missile", "Fireball", "Firebolt", "Arcane Light", "Invisibility", "Lightning Bolt", "Chain Lightning", "Locate Object", "Lead to Gold", "Darkvision", "Enchant Weapon", "Haste", "Arcane Shield", "Identify", "Dispell Curse"]
 sorcererspells =  ["Magic Missile", "Fireball", "Firebolt", "Arcane Light", "Invisibility", "Lightning Bolt", "Chain Lightning", "Locate Object", "Darkvision", "Enchant Weapon", "Haste", "Arcane Shield", "Ignite Weapon", "Cure Drunkard"]
@@ -14,7 +15,7 @@ paladinspells = ["Holy Light", "Turn Undead", "Minor Healing", "Major Healing", 
 spellscrolls = ["Magic Missile", "Fireball", "Firebolt", "Arcane Light", "Invisibility", "Lightning Bolt", "Chain Lightning", "Locate Object", "Lead to Gold", "Darkvision", "Enchant Weapon", "Haste", "Arcane Shield", "Holy Light", "Turn Undead", "Minor Healing", "Major Healing", "Bless Person", "Protection", "Smite Undead", "Prayer", "Magic Missile", "Identify", "Dispell Curse", "Speak to Animals"]
 weapon = ["Shortsword (1d6)", "Longsword (2d6)", "Greatsword (3d6)", "Club (1d6)", "Mace (2d6)", "Maul (3d6)", "Druidic Staff (1d6)", "Spellbook (0)", "Shortbow (1d6)", "Longbow (2d6)", "Hand Crossbow (1d6)", "Light Crossbow (2d6)", "Arbalest (3d6)", "Dagger (1d6)", "Rapier (1d6)", "Lute (0)", "Lyre (0)", "Crystal Ball (0)", "Hatchet (1d6)", "Waraxe (2d6)", "Danish Axe (3d6)", "Goedendag (1d6)", "Spear (2d6)", "Lance (2d6)", "Quarterstaff (1d6)", "Halberd (3d6)", "Prybar (1d6)"]
 items = "Nothing"
-item = ["Torch", "Glasses", "Mirror", "Holy Water", "Holy Symbol", "Beartrap", "Thief's Tools", "Map", "Compass", "Lead Fishing Weight", "Pint of Ale", "Glass of Wine", "Horn of Mead", "Lead Boots", "Raincoat", "Light Cloak", "Fake Amulet of Yendor"]
+item = ["Torch", "Glasses", "Mirror", "Holy Water", "Holy Symbol", "Beartrap", "Thief's Tools", "Map", "Compass", "Lead Fishing Weight", "Pint of Ale", "Glass of Wine", "Horn of Mead", "Lead Boots", "Raincoat", "Light Cloak"]
 armor = ["Clothing (0)", "Gambeson (1)", "Leather Armor (2)", "Plate Armor (4)", "Magical Robes (0)", "Dark Wraps (0)", "Chainmail (3)", "Wooden Shield (1)", "Iron Shield (1)"]
 blesscurse = ["-3 Cursed", "-2 Cursed", "-1 Cursed", "Uncursed", "Uncursed", "Uncursed", "Uncursed", "Uncursed", "+1 Blessed", "+2 Blessed", "+3 Blessed", "+4 Blessed"]
 ttype = ["Golden", "Silver", "Bronze", "Iron", "Copper"]
@@ -1463,9 +1464,6 @@ while atlas:
         print("2: Economic Sector")
         print("3: Industrial Sector")  
         print("4: Agriculture Sector")
-if menu:
-    input("Input anything to close the program   ")
-#Ask Cosmo to add any extra classes to the optional classes list!
 if menu:
     input("Input anything to close the program   ")
     

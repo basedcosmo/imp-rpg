@@ -2,8 +2,11 @@ import time
 import random
 import os
 import math
+goblin = False
 spec = ""
 #You can take the code, and share it as long as you ask before you do and dont promote it as your own code, and dont say you created it either. Contact me at basedcosmo on discord.
+pe = ["Healing", "Invisibility", "Strength", "Fire Resistance", "Projectile Resistance", "Truesight", "Darkvision", "Haste", "Poison", "Disintegration", "Booze", "Fruit Juice", "Unpetrification", "Sickness", "Ignite Self"]
+pc = ["Red", "Green", "Blue", "Yellow", "Purple", "Purple-Red", "White", "Blue-Green", "Light Blue", "Dark Green", "Neon Yellow", "Red", "Yellow", "Lime green", "Green", "Sky blue", "Crimson", "Grey", "Purple", "Mustard", "Violet", "Magenta", "Coral", "Brown", "Pink", "Tan"]
 wizardspells = ["Magic Missile", "Fireball", "Firebolt", "Arcane Light", "Invisibility", "Lightning Bolt", "Chain Lightning", "Locate Object", "Lead to Gold", "Darkvision", "Enchant Weapon", "Haste", "Arcane Shield", "Identify", "Dispell Curse"]
 sorcererspells =  ["Magic Missile", "Fireball", "Firebolt", "Arcane Light", "Invisibility", "Lightning Bolt", "Chain Lightning", "Locate Object", "Darkvision", "Enchant Weapon", "Haste", "Arcane Shield", "Ignite Weapon", "Cure Drunkard"]
 clericspells = ["Holy Light", "Turn Undead", "Minor Healing", "Major Healing", "Prayer of Mass Healing", "Cure Wounds", "Cure Sickness", "Bless Person", "Protection", "Prayer", "Magic Missile"]
@@ -20,13 +23,13 @@ jewels = ["Necklace", "Ring", "Cape", "Helmet", "Gloves", "Toering", "Belt"]
 jtype = ["Intellect", "Vigor", "Vitality", "Speed", "Darkvision", "Binding", "Blinding", "Slowness", "Light", "Springing", "Reading", "Purification", "Chastity", "Disintegration"]
 enemy = ["Orcs", "Goblins", "Skeletons", "Zombies", "Mummies", "Slimes", "Giant Bats", "Wolves", "Greedy Gnomes", "Cultists", "Demons", "Kobolds", "Bears", "Trogbears", "Centaurs", "Ogres", "Knights", "Minotaurs", "Ettins", "Incubi", "Succubi", "Trolls", "Golems", "Vampires", "Grey Dragons", "Blue Dragons", "Silver Dragons"]
 Wtype = ["Sword", "Axe", "Maul", "Bow", "Staff"]
-Weffect = ["Mjolnir, Hammer of Lighting (3d6, +1d6 Shock)", "Sumarbrander, Sword of Summer (3d6, Sentient)", "Gungnir, Spear of The All-Father (2d6, Always hits the enemy)", "Hrunting, the Blood Tempered Blade (3d6)", "Sharur, the Smasher of Thousands (3d6, Sentient)", "Dyrnwyn, Blade of Fire (3d6, +1d6 Flame)", "Excalibur, the Holy Blade (3d6, +1d6 Holy)", "Balmung, Blade of the Dragon Slayer (2d6, +3d6 against dragons)", "Sting, the Orc Slayer (3d6, Glows in presense of orcs)", "Skofnung, King's Blade (3d6, enemy loses 1 AC on a hit)", "Cinder, the Scalding Halberd (2d6, 2d6 Flame)", "Throthnur, the Elven Bow of Truth (4d6)", "Fulgor, Lightning of the North (3d6, +1d6 Shock)", "Aegis, the Speaking Shield (+2 AC, Sentient)", "Nipalan, the Pushing Arrow (3d6, enemy is pushed back)", "Fethan, the ever-inked feather", "Nipithir, Wand of unknown Magick"]
+Weffect = ["Mjolnir, Hammer of Lighting (3d6, +1d6 Shock)", "Sumarbrander, Sword of Summer (3d6, Sentient)", "Gungnir, Spear of The All-Father (2d6, Always hits the enemy)", "Hrunting, the Blood Tempered Blade (3d6)", "Sharur, the Smasher of Thousands (3d6, Sentient)", "Dyrnwyn, Blade of Fire (3d6, +1d6 Flame)", "Excalibur, the Holy Blade (3d6, +1d6 Holy)", "Balmung, Blade of the Dragon Slayer (2d6, +3d6 against dragons)", "Sting, the Orc Slayer (3d6, Glows in presense of orcs)", "Skofnung, King's Blade (3d6, enemy loses 1 AC on a hit)", "Cinder, the Scalding Halberd (2d6, 2d6 Flame)", "Throthnur, the Elven Bow of Truth (4d6)", "Fulgor, Lightning of the North (3d6, +1d6 Shock)", "Aegis, the Speaking Shield (+2 AC, Sentient)", "Nipalan, the Pushing Arrow (3d6, enemy is pushed back)", "Fethan, the ever-inked feather", "Nipithir, Wand of unknown Magick", "Lavsavir, a Lifesaving Necklace", "Lavsavir, a Lifesaving Necklace", "Lavsavir, a Lifesaving Necklace"]
 print("Welcome to the Character Generator! \n \n \n")
 advanced = False
 basic = True
-name = "None"
-race = "None"
-cclass = "None"
+name = "Gene"
+race = "Human"
+cclass = "Peasant"
 strength = 0
 dexterity = 0
 intelligence = 0
@@ -72,6 +75,9 @@ if menu:
     print("8: Enemy Codex")
     print("9: Shop Generator")
     print("10: Dungeon Navagator")
+    print("11: Class Lists")
+    print("12: Potion Generator")
+    print("13: Locations in the World")
     choice = input("Input Number Choice: ")
     if choice == "1":
         menu = False
@@ -82,7 +88,7 @@ if menu:
         intelligence = random.randint (3, 8)
         name = input("What is your name?  ")
         #Base: Fighter, Wizard, Cleric, Thief, Adventurer, Sorcerer, Hunter
-        #Optional: Gunslinger, Beserker, Paladin, Knight
+        #Optional: Gunslinger, Beserker, Paladin, Knight, Caveman, Tourist, Peasant
         classlistselect = input("Are you using the extra character list? (Y/N)  ")
         if classlistselect == "Y":
             advanced = True
@@ -164,7 +170,11 @@ if menu:
                 basic = False
         
         while advanced:
-                cclass = input("What is your Character Class? (Fighter, Wizard, Cleric, Thief, Adventurer, Sorcerer, Hunter, Gunslinger, Beserker, Paladin, Knight)  ")
+                cclass = input("What is your Character Class? (Fighter, Wizard, Cleric, Thief, Adventurer, Sorcerer, Hunter, Gunslinger, Berserker, Paladin, Knight, Caveman, Peasant)  ")
+                if cclass == "Peasant":
+                    classspecial = "Peasants can do anything they want, expending a non-regeneratable luck point."
+                    spec = "luck: 3 / 3"
+                
                 if cclass == "Fighter":
                     strength + 2
                 elif cclass == "Wizard":
@@ -181,6 +191,7 @@ if menu:
                 elif cclass == "Adventurer":
                     constitution + 1
                     classspecial = "You start with random items, and loot."
+                    goblin = True
                     items = (random.choice(weapon), random.choice(armor), "Scroll of " + random.choice(spellscrolls))
                 elif cclass == "Paladin":
                     strength + 1
@@ -192,7 +203,7 @@ if menu:
                 if cclass == "Thief":
                     race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome, Hobbit)  ")
                 if cclass == "Adventurer":
-                    race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome, Hobbit)  ")
+                    race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome, Hobbit, Goblin)  ")
                 if cclass == "Fighter":
                     race = input("What is your race? (Human, Half-Orc, Half-Elf, Elf, Dwarf, Gnome)  ")
                 if cclass == "Wizard":
@@ -204,6 +215,8 @@ if menu:
                 if cclass == "Hunter":
                     race = input("What is your race? (Half-Orc, Half-Elf, Elf)  ")
                 if cclass == "Paladin":
+                   race = input("What is your race? (Human, Dwarf)  ")
+                if cclass == "Caveman":
                    race = input("What is your race? (Human, Dwarf)  ")
                 if cclass == "Gunslinger":
                     race = "Human"
@@ -221,7 +234,10 @@ if menu:
                     racialbonus = "no racial bonus"
                     classspecial = "You must abide by all laws, incite peace, and vanquish any evil on sight."
                     spec = "Charisma: +1"
-                    spec = True
+                if cclass == "Caveman":
+                    classspecial = "Cavemen have a base constitution of 11 and an extra 6 hp, but can only use mace like weapons and no clothes."
+                    constitution = 11
+                    hp + 6
                 if race == "Human":
                     racialbonus = "no racial bonus"
                 elif race == "Half-Orc":
@@ -233,7 +249,11 @@ if menu:
                 elif race == "Half-Elf":
                     racialbonus == "druidic instincts"
                     racialspecial == "gain the spell 'Speak to Animals'"
-
+                
+                if race == "Goblin":
+                    dexterity = dexterity + 2
+                    racialbonus = "goblin size"
+                    racialspecial = "Due to their small size, goblins are dexterous"
                 elif race == "Dwarf":
                     racialbonus == "dwarven darkvision"
                     racialspecial = "You have Darkvision, 60 feet."
@@ -281,6 +301,9 @@ if menu:
             print("Your starting items are: Blessed +1 Lance (2d6), Uncursed Plate Armor (4), Uncursed Banner (1d6), Blessed +5 Book of Law")
         if cclass == "Berserker":
             print("Your starting items are: Uncursed Danish Axe (3d6), Uncursed Barbarian Wraps (-1), Uncursed Lyre")
+        pgold = random.randint(20,60)
+        if cclass == "Peasant":
+            print("Your starting items are: Uncursed Goedendag (1d6), Uncursed Dirty Clothing (0),", pgold, "¤")
         
         print("strength:", strength)
         print("dexterity:", dexterity)
@@ -289,7 +312,8 @@ if menu:
         hp = constitution
         mana = intelligence
         ac = dexterity / 2
-        print("hp:", hp + 6, "/", hp + 6)
+        hp = hp + 6
+        print("hp:", hp, "/", hp)
         if mana >= 9:
             mana = 8
         print("mana:", mana, "/", mana)
@@ -875,7 +899,7 @@ while deslicar:
         print(" ║·······║")
         print(" ╚════█══╝")
         print("This room is 15 feet by 35 feet and has one door")
-        print("This room also has a stream of flowing water and a pedestal holding an amulet on it in it")
+        print("This room also has a stream of flowing water and a pedestal holding Balmung, Blade of the Dragon Slayer on it in it")
         print("0,2,-3")
 
 while alicar:
@@ -1377,6 +1401,71 @@ if choice == "11":
         print("These classes might come with items that cannot be generated elsewhere")
     else:
         print("Ask Cosmo to add any extra classes to the optional classes list!")
+if choice == "12":
+    print(random.choice(pc), "Potion of", random.choice(pe))
+    print(random.choice(pc), "Potion of", random.choice(pe))
+    print(random.choice(pc), "Potion of", random.choice(pe))
+atl = "What is your desired location: "
+if choice == "13":
+    atlas = True
+while atlas:
+    print("In the world of Imp, there are various things that you can do. There is locations that you can visit, and remember. The locations will be listed below, choose one to learn more about it")
+    print("1: River Valley Asil")
+    print("2: Forests of Alicar")
+    print("3: Lake Elvar")
+    print("4: The Valley of Doom")
+    print("5: Unitari City")
+    shitfartpoop = input(atl)
+    if shitfartpoop == "1":
+        print("The river valley Asil holds the river Asil, the entrance to the Dungeon of Deslicar, and the taverns Asil")
+        print("Where would you like to see next?")
+        print("1: the river Asil")
+        print("2: the dungeon of Deslicar")
+        print("3: the taverns Asil")
+        shitfartpoop = input(atl)
+        if shitfartpoop == "1":
+            print("The river Asil is a large river that flows down from the northern mountains. It eventually leads into and out of the lake Elvar. It usually has nothing of note besides random warriors.")
+        if shitfartpoop == "2":
+            print("The dungeons of Deslicar is a ancient dungeon that holds the artifact Balmung. Balmung is worth many gold pieces, and is a worthy weapon to find and sell or use.")
+        if shitfartpoop == "3":
+            print("The taverns Asil is the best place to find non-dungeon tasks for any adventurer. It is almost like a village of just taverns, store sheds, outhouses, and inns.")
+    if shitfartpoop == "2":
+        print("The forests of Alicar holds the forests of Alicar, the seeing pond of Tomn, the entrance to the Ruins of Alicar, and the Necromancer's Tower")
+        print("Where would you like to see next?")
+        print("1: the forests of Alicar")
+        print("2: the seeing pond of Tomn")
+        print("3: the ruins of Alicar")  
+        print("4: the Necromancer's Tower")
+        
+        shitfartpoop = input(atl)
+        if shitfartpoop == "1":
+            print("The forests of Alicar are a group of large forests that hold the various magical properties that spawn evil. It is said that the world's first good and evil originated here.")
+        if shitfartpoop == "2":
+            print("The seeing pond of Tomn is a pond enchanted by the god Tomn who has the ability to see into a person's future.")
+        if shitfartpoop == "3":
+            print("The taverns Asil is the best place to find non-dungeon tasks for any adventurer. It is almost like a village of just taverns, store sheds, outhouses, and inns.")
+    if shitfartpoop == "3":
+        print("The lake Elvar holds Rivertown, the Lair of the water serpent Hullne, and the Arena of Yalundor")
+        print("Where would you like to see next?")
+        print("1: Rivertown")
+        print("2: the lair of the water serpent Hullne")
+        print("3: the arena of Yalundor")  
+    if shitfartpoop == "4":
+        print("The valley of doom holds the entrance to the dungeons of Doom, the labratory of Quemann, and the skeleton of the last Desetunn")
+        print("Where would you like to see next?")
+        print("1: the labratory of Quemann")
+        print("2: the dungeons of Doom")
+        print("3: the skeleton of the last Desetunn")  
+    if shitfartpoop == "5":
+        print("The Unitari city has four sectors. The housing, economic, industrial, and agriculture.")
+        print("Where would you like to see next?")
+        print("1: Housing Sector")
+        print("2: Economic Sector")
+        print("3: Industrial Sector")  
+        print("4: Agriculture Sector")
+if menu:
+    input("Input anything to close the program   ")
+#Ask Cosmo to add any extra classes to the optional classes list!
 if menu:
     input("Input anything to close the program   ")
     

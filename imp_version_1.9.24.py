@@ -2,8 +2,10 @@ import time
 import random
 import os
 import math
+hl = False
 goblin = False
 atlas = False
+lvup1 = False
 spec = ""
 #You can take the code, and share it as long as you ask before you do and dont promote it as your own code, and dont say you created it either. Contact me at basedcosmo on discord.
 pe = ["Healing", "Mana Regeneration", "Invisibility", "Strength", "Fire Resistance", "Projectile Resistance", "Truesight", "Darkvision", "Haste", "Poison", "Disintegration", "Booze", "Fruit Juice", "Unpetrification", "Sickness", "Ignite Self", "Instant Death", "Teleportation", "Water"]
@@ -14,6 +16,7 @@ clericspells = ["Holy Light", "Turn Undead", "Minor Healing", "Major Healing", "
 paladinspells = ["Holy Light", "Turn Undead", "Minor Healing", "Major Healing", "Bless Person", "Protection", "Thunderous Smite", "Holy Smite", "Searing Smite", "Insightful Question", "Dispell Curse"]
 spellscrolls = ["Magic Missile", "Fireball", "Firebolt", "Arcane Light", "Invisibility", "Lightning Bolt", "Chain Lightning", "Locate Object", "Lead to Gold", "Darkvision", "Enchant Weapon", "Haste", "Arcane Shield", "Holy Light", "Turn Undead", "Minor Healing", "Major Healing", "Bless Person", "Protection", "Smite Undead", "Prayer", "Magic Missile", "Identify", "Dispell Curse", "Speak to Animals"]
 weapon = ["Shortsword (1d6)", "Longsword (2d6)", "Greatsword (3d6)", "Club (1d6)", "Mace (2d6)", "Maul (3d6)", "Druidic Staff (1d6)", "Spellbook (0)", "Shortbow (1d6)", "Longbow (2d6)", "Hand Crossbow (1d6)", "Light Crossbow (2d6)", "Arbalest (3d6)", "Dagger (1d6)", "Rapier (1d6)", "Lute (0)", "Lyre (0)", "Crystal Ball (0)", "Hatchet (1d6)", "Waraxe (2d6)", "Danish Axe (3d6)", "Goedendag (1d6)", "Spear (2d6)", "Lance (2d6)", "Quarterstaff (1d6)", "Halberd (3d6)", "Prybar (1d6)"]
+pwep = ["Uncursed Dagger (1d6)", "Uncursed Club (1d6)", "Uncursed Shortbow (1d6)", "Uncursed Hatchet (1d6)"]
 items = "Nothing"
 item = ["Torch", "Glasses", "Mirror", "Holy Water", "Holy Symbol", "Beartrap", "Thief's Tools", "Map", "Compass", "Lead Fishing Weight", "Pint of Ale", "Glass of Wine", "Horn of Mead", "Lead Boots", "Raincoat", "Light Cloak"]
 armor = ["Clothing (0)", "Gambeson (1)", "Leather Armor (2)", "Plate Armor (4)", "Magical Robes (0)", "Dark Wraps (0)", "Chainmail (3)", "Wooden Shield (1)", "Iron Shield (1)"]
@@ -28,6 +31,7 @@ Weffect = ["Mjolnir, Hammer of Lighting (3d6, +1d6 Shock)", "Sumarbrander, Sword
 print("Welcome to the Character Generator! \n \n \n")
 advanced = False
 basic = True
+lootgen = False
 name = "Gene"
 race = "Human"
 cclass = "Peasant"
@@ -66,19 +70,22 @@ randloot = random.randint(1, 3)
 if menu:
     print("System made by Cosmo and amarvin")
     print(" ")
-    print("1: Begin Generatorizer")
-    print("2: Infomation about the Generatorizer")
-    print("3: Random Unique Item Generator")
-    print("4: Spell List")
-    print("5: Level Up Bonus Generatorizer")
-    print("6: Random Loot Generator")
-    print("7: Room Generator")
-    print("8: Enemy Codex")
-    print("9: Shop Generator")
+    time.sleep(2)
+    print("1 : Begin Generator")
+    print("2 : Infomation about the Generator")
+    print("3 : Random Unique Item Generator")
+    print("4 : Spell List")
+    print("5 : Level Up Bonus Generator")
+    print("6 : Random Loot Generator")
+    print("7 : Room Generator")
+    print("8 : Enemy Codex")
+    print("9 : Shop Generator")
     print("10: Dungeon Navagator")
     print("11: Class Lists")
     print("12: Potion Generator")
     print("13: Locations in the World")
+    print("14: Encounter Generator (Beta)")
+    time.sleep(1)
     choice = input("Input Number Choice: ")
     if choice == "1":
         menu = False
@@ -90,21 +97,37 @@ if menu:
         name = input("What is your name?  ")
         #Base: Fighter, Wizard, Cleric, Thief, Adventurer, Sorcerer, Hunter
         #Optional: Gunslinger, Beserker, Paladin, Knight, Caveman, Tourist, Peasant
-        classlistselect = input("Are you using the extra character list? (Y/N)  ")
-        if classlistselect == "Y":
-            advanced = True
+        classlistselect = input("What class list are you using? (Fantasy, Half-Life)")
+        if classlistselect == "Fantasy":
+            
+            classlistselectfantasy = input("Are you using the extra character list? (y/n)  ")
+            if classlistselect == "Y":
+                advanced = True
+                basic = False
+            if classlistselect == "y":
+                advanced = True
+                basic = False
+            if classlistselect == "N":
+                basic = True
+                advanced = False
+            if classlistselect == "n":
+                basic = True
+                advanced = False
+        if classlistselect == "Half-Life":
+            hl = True
             basic = False
-        if classlistselect == "y":
-            advanced = True
-            basic = False
-        if classlistselect == "N":
-            basic = True
-            advanced = False
-        if classlistselect == "n":
-            basic = True
-            advanced = False
+        while hl:
+            cclass = input("What is your Character Class? (Scientist, Guard)")
+            
+            if cclass == "Scientist":
+                intelligence + 2
+                race = "Human"
+            if cclass == "Guard":
+                strength + 2
+                race = "Human"
+            hl = False
         while basic:
-                cclass = input("What is your Character Class? (Fighter, Wizard, Cleric, Thief, Adventurer, Sorcerer, Hunter)  ")
+                cclass = input("What is your Character Class? (Fighter, Wizard, Cleric, Thief, Adventurer, Sorcerer, Hunter, Peasant)  ")
                 
                 if cclass == "Fighter":
                     strength + 2
@@ -127,6 +150,9 @@ if menu:
                     strength + 1
                     constitution + 1
                     classspecial = "You are a spellcaster."
+                pgold = random.randint(20,60)
+                if cclass == "Peasant":
+                    print("Items: Uncursed Goedendag (1d6), Uncursed Dirty Clothing (0),", pgold, "¤")
                 elif cclass == "Hunter":
                     dexterity + 1
                     constitution + 1
@@ -169,7 +195,6 @@ if menu:
                     racialbonus = "hobbit dexterity"
                     racialspecial = "Hobbits are locked to Thieves and Adventurers, if you arent a thief or adventurer, you must make a new character."
                 basic = False
-        
         while advanced:
                 cclass = input("What is your Character Class? (Fighter, Wizard, Cleric, Thief, Adventurer, Sorcerer, Hunter, Gunslinger, Berserker, Paladin, Knight, Caveman, Peasant)  ")
                 if cclass == "Peasant":
@@ -181,12 +206,15 @@ if menu:
                 elif cclass == "Wizard":
                     intelligence + 2
                     classspecial = "You are a spellcaster."
+                    spec = "Arcane Spellcasting"
                 elif cclass == "Sorcerer":
                     intelligence + 1
                     classspecial = "You are a spellcaster"
+                    spec = "Arcane Spellcasting"
                 elif cclass == "Cleric":
                     intelligence + 1
                     classspecial = "You are a spellcaster."
+                    spec = "Arcane Spellcasting"
                 elif cclass == "Thief":
                     dexterity + 2
                 elif cclass == "Adventurer":
@@ -198,6 +226,7 @@ if menu:
                     strength + 1
                     constitution + 1
                     classspecial = "You are a spellcaster."
+                    spec = "Arcane Spellcasting"
                 elif cclass == "Hunter":
                     dexterity + 1
                     constitution + 1
@@ -223,18 +252,18 @@ if menu:
                     race = "Human"
                     racialbonus = "no racial bonus"
                     classspecial = "With any ranged weapon, you can make an int check to target an organ or vital piece of their body. This includes fingers, eyeballs, and other things of the sort."
-                    spec = "Leadership: +1"
+                    spec = "Limb Targeting"
                 if cclass == "Berserker":
                     race == "Half-Orc"
                     strength = strength + 2
                     racialbonus == "orcish strength"
                     classspecial = "When attacked, you can roll a Dex check to riposte and deal an instant crit"
-                    spec = "Intimidation: +1"
+                    spec = "Parry Master (Dex)"
                 if cclass == "Knight":
                     race == "Human"
                     racialbonus = "no racial bonus"
                     classspecial = "You must abide by all laws, incite peace, and vanquish any evil on sight."
-                    spec = "Charisma: +1"
+                    spec = "Charismatic"
                 if cclass == "Caveman":
                     classspecial = "Cavemen have a base constitution of 11 and an extra 6 hp, but can only use mace like weapons and no clothes."
                     constitution = 11
@@ -267,45 +296,52 @@ if menu:
                     racialspecial = "Hobbits are locked to Thieves and Adventurers, if you arent a thief or adventurer, you must make a new character."
                 advanced = False
 
+        #novice,experienced,master,legend, mythical (novice = level one to two, each name is two levels, max level 10)
         os.system('cls')
         print("You are", name, "× You are a", race, "×" " You are a", cclass, "×", racialspecial, "×", classspecial)
-        print("Your full character name is:", name + " the", race, cclass)
+        print("Your full character name is:", name + " the Novice", race, cclass)
         if cclass == "Wizard":
-            print("Your starting spells are:", random.choice(wizardspells) + ",", random.choice(wizardspells) + ",", random.choice(wizardspells))
+            print("Spells:", random.choice(wizardspells) + ",", random.choice(wizardspells) + ",", random.choice(wizardspells))
         if cclass == "Cleric":
-            print("Your starting spells are:", random.choice(clericspells) + ",", random.choice(clericspells))
+            print("Spells:", random.choice(clericspells) + ",", random.choice(clericspells))
         if cclass == "Sorcerer":
-            print("Your starting spells are:", random.choice(wizardspells) + ",", random.choice(wizardspells) + ",", random.choice(wizardspells) + ",", random.choice(wizardspells))
+            print("Spells:", random.choice(wizardspells) + ",", random.choice(wizardspells) + ",", random.choice(wizardspells) + ",", random.choice(wizardspells))
         if cclass == "Paladin":
-            print("Your starting spells are:", random.choice(paladinspells) + ",", random.choice(paladinspells) + ",", random.choice(paladinspells))
+            print("Spells:", random.choice(paladinspells) + ",", random.choice(paladinspells) + ",", random.choice(paladinspells))
         if race == "Half-Elf":
             print("You have an additional race inherant spell: Speak to Animals")
         if cclass == "Fighter":
-            print("Your starting items are: Blessed +1 Longsword (2d6), Uncursed Wooden Shield (0), Uncursed Clothing (0), Uncursed Potion of Healing")
+            print("Items: Blessed +1 Longsword (2d6), Uncursed Wooden Shield (0), Uncursed Clothing (0), Uncursed Potion of Healing")
         if cclass == "Wizard":
-            print("Your starting items are: Uncursed Staff (1d6), Uncursed Spellbook (0), Uncursed Magic Robes (0), Uncursed Potion of Mana Rejuvination, Blessed +1 Ring of Magic Resistance")
+            print("Items: Uncursed Staff (1d6), Uncursed Spellbook (0), Uncursed Magic Robes (0), Uncursed Potion of Mana Rejuvination, Blessed +1 Ring of Magic Resistance")
         if cclass == "Cleric":
-            print("Your starting items are: Uncursed Mace (1d6), Uncursed Spellbook (0), Uncursed Magic Robes (0), Blessed +2 Holy Symbol")
+            print("Items: Uncursed Mace (1d6), Uncursed Spellbook (0), Uncursed Magic Robes (0), Blessed +2 Holy Symbol")
         if cclass == "Thief":
-            print("Your starting items are: Uncursed Dagger (1d6), Uncursed Dark Wraps (0), Uncursed Thief's Tools")
+            print("Items: Uncursed Dagger (1d6), Uncursed Dark Wraps (0), Uncursed Thief's Tools")
         if cclass == "Sorcerer":
-            print("Your starting items are: Uncursed Shortsword (1d6), Uncursed Crystal Ball (0), Uncursed Magic Robes (0)")
+            print("Items: Uncursed Shortsword (1d6), Uncursed Crystal Ball (0), Uncursed Magic Robes (0)")
         if cclass == "Adventurer":
-            print("Your starting items are: Uncursed Potion of Healing,", "Blessed +1 " + random.choice(weapon) + ",", "Blessed +1 " + random.choice(armor))
+            print("Items: Uncursed Potion of Healing,", "Blessed +1 " + random.choice(weapon) + ",", "Blessed +1 " + random.choice(armor))
         if cclass == "Hunter":
-            print("Your starting items are: Uncursed Light Crossbow (2d6), 20 Uncursed Bolts, Uncursed Beartrap, Uncursed Potion of Haste")
+            print("Items: Uncursed Light Crossbow (2d6), 20 Uncursed Bolts, Uncursed Beartrap, Uncursed Potion of Haste")
         if cclass == "Paladin":
-            print("Your starting items are: Blessed +1 Longsword (2d6), Uncursed Plate Armor (4), Uncursed Spellbook (0)")
+            print("Items: Blessed +1 Longsword (2d6), Uncursed Plate Armor (4), Uncursed Spellbook (0)")
         if cclass == "Gunslinger":
-            print("Your starting items are: Uncursed Revolver (2d6), 24 Uncursed Bullets, Uncursed Western Hat (0), Uncursed Clothes (0), Uncursed Compass")
+            print("Items: Uncursed Revolver (2d6), 24 Uncursed Bullets, Uncursed Western Hat (0), Uncursed Clothes (0), Uncursed Compass")
         if cclass == "Knight":
-            print("Your starting items are: Blessed +1 Lance (2d6), Uncursed Plate Armor (4), Uncursed Banner (1d6), Blessed +5 Book of Law")
+            print("Items: Blessed +1 Lance (2d6), Uncursed Plate Armor (4), Uncursed Banner (1d6), Blessed +5 Book of Law")
         if cclass == "Berserker":
-            print("Your starting items are: Uncursed Danish Axe (3d6), Uncursed Barbarian Wraps (-1), Uncursed Lyre")
+            print("Items: Uncursed Danish Axe (3d6), Uncursed Barbarian Wraps (-1), Uncursed Lyre")
         pgold = random.randint(20,60)
         if cclass == "Peasant":
-            print("Your starting items are: Uncursed Goedendag (1d6), Uncursed Dirty Clothing (0),", pgold, "¤")
-        
+            print("Items:", random.choice(pwep), ", Uncursed Dirty Clothing (0),", pgold, "¤")
+        if cclass == "Guard":
+            print("Items: 9mm Pistol (2d6), Guard's Outfit (2), Guard Radio, L1 Access Card")
+        if cclass == "Scientist":
+            print("Items: Crowbar (1d6), Med-Pack, Scientist's Outfit (0), L2 Access Card")
+        if cclass == "Hazard Handeler":
+            print("Items: Crowbar (1d6), HEV Suit (4), L1 Access Card")
+            spec = "Your HEV can run out of battery at random times."
         print("strength:", strength)
         print("dexterity:", dexterity)
         print("intelligence:", intelligence)
@@ -313,17 +349,18 @@ if menu:
         hp = constitution
         mana = intelligence
         ac = dexterity / 2
-        hp = hp + 6
+        math.floor(ac)
+        hp = hp + 12
         print("hp:", hp, "/", hp)
         if mana >= 9:
             mana = 8
         print("mana:", mana, "/", mana)
-        if ac > 16:
-            ac = 15
-        if ac <= 4:
-            ac = 4
-        print("ac:", ac + 1)
+        if ac >= 9:
+            ac = 8
+        if ac <= 2:
+            ac = 3
         math.floor(ac)
+        print("ac:",ac + 1)
         print(spec)
         input("")
 
@@ -360,16 +397,31 @@ if choice == "4":
 
     menu = True
 
-levelup = ["+1 strength", "+1 dexterity", "+1 constitution", "+1 intelligence", "+6 mHP", "Learn a random spell"]
+
+levelup = ["Gain a Trait"]
+traitup = ["Fortitude (+6 HP)", "Limb Targeting (IQ)", "Charismatic", "Parry Master (DX)", "Firearm Knowledge", "Intimidating", "Arcane Spellcasting", "Battle Rage", "Human Supercomputer (IQ)", "Master Adventurer", "Witty Reflexes", "Nible Hands", "Tinkerer", ]
+if choice == "tdebug":
+    print(random.choice(traitup))
 if choice == "5":
-    menu = False
+    lvup1 = True
+while lvup1:
     print("I am now automatically generating a level up reward!")
     print("Drum roll please...")
     time.sleep(2)
-    print("Your level bonus is: ", random.choice(levelup))
+    lvup = random.choice(levelup)
+    if lvup == "Gain a Trait":
+        print("Your level bonus is: ", random.choice(traitup))
+    else:
+        print("Your level bonus is: ", random.choice(levelup))
+    e = input("Exit to exit, anything else to redo")
+    if e == "exit":
+        quit()
 
 if choice == "6":
+    lootgen = True
+while lootgen:
     print("Please choose a item type to generate (Jewel, Item, Weapon, Armor, Treasure, Scroll, Wand, All)")
+    print("Input Exit to exit")
     fart = input("Input: ")
     if fart == "Jewel":
         print(random.choice(blesscurse), random.choice(jewels), "of", random.choice(jtype))
@@ -388,9 +440,9 @@ if choice == "6":
         print(random.choice(blesscurse), random.choice(armor))
         print(random.choice(blesscurse), random.choice(armor))
     if fart == "Treasure":
-        print(random.choice(blesscurse), random.choice(ttype), random.choice(treasure), "worth", random.randint(1,700), "¤")
-        print(random.choice(blesscurse), random.choice(ttype), random.choice(treasure), "worth", random.randint(1,700), "¤")
-        print(random.choice(blesscurse), random.choice(ttype), random.choice(treasure), "worth", random.randint(1,700), "¤")
+        print(random.choice(blesscurse), random.choice(ttype), random.choice(treasure), "worth", random.randint(25,250), "¤")
+        print(random.choice(blesscurse), random.choice(ttype), random.choice(treasure), "worth", random.randint(50,500), "¤")
+        print(random.choice(blesscurse), random.choice(ttype), random.choice(treasure), "worth", random.randint(100,1000), "¤")
     if fart == "Scroll":
         print(random.choice(blesscurse), "Scroll of", random.choice(spellscrolls))
         print(random.choice(blesscurse), "Scroll of", random.choice(spellscrolls))
@@ -404,9 +456,12 @@ if choice == "6":
         print(random.choice(blesscurse), random.choice(item))
         print(random.choice(blesscurse), random.choice(weapon))
         print(random.choice(blesscurse), random.choice(armor))
-        print(random.choice(blesscurse), random.choice(ttype), random.choice(treasure), "worth", random.randint(1,300), "¤")
+        print(random.choice(blesscurse), random.choice(ttype), random.choice(treasure), "worth", random.randint(50,500), "¤")
+        print(random.choice(pc), "Potion of", random.choice(pe))
+        print(random.choice(pc), "Potion of", random.choice(pe))
         print(random.choice(blesscurse), "Scroll of", random.choice(spellscrolls))
         print(random.choice(blesscurse), "Wand of", random.choice(spellscrolls))
+    time.sleep(3)
 
 shopyn = ["Is", "Isn't", "Isn't", "Isn't", "Isn't", "Isn't"]
 traps = ["a Pitfall Trap", "a Spike Trap", "a Mimic", "a Fake Door", "an Exploding Chest", "a Firebreathing Chest", "a Boulder Trap at the Door", "a Boulder Trap above a Chest", "no Traps", "no Traps", "no Traps", "no Traps"]
@@ -433,7 +488,23 @@ while shit:
     print("Please choose a monster from this list:")
     print(enemy)
     print(' ')
+    wname = ["Albrut", "Bahtno", "Carlos", "Danic", "Elmerac", "Fulgora", "Guinun", "Hett", "Initir", "Jetaz", "Keloman", "Lennkon", "Mithnir", "Nocknir", "Olrinn", "Pillman", "Quintorr", "Rissfield", "Sall", "Til", "Usikk", "Vickermann", "Wynn", "Yann", "Zetafield"]
+    wtitle = ["Cursed", "Evil", "Undead", "Demonic", "Unholy", "Rotting"]
+    wc1 = random.choice(wname)
+    wc2 = random.choice(wtitle)
     EIM = input("Please input your choice here (Cap. Sensitive):   ")
+    if EIM == "Warlock":
+        print("Name:", wc1 ,"the", wc2, "Warlock")
+        print("Items:",  wc1 + "'s Longsword, Plate Armor (4), Demonic Shackle,", random.randint(100,300), "¤")
+        print("str: 7")
+        print("dex: 6")
+        print("int: 6")
+        print("con: 6")
+        print("hp: 15/15")
+        print("mana: 4/4")
+        print("ac: 7")
+        print("dmg: 2d6")
+        print("notes: Warlocks are weak to Holy Damage.")
     if EIM == "Orcs":
         print("Name: Orc")
         print("Items: Longsword, Gambeson,", random.randint(1,40), "¤")
@@ -1393,13 +1464,15 @@ if choice == "9":
 #Base: Fighter, Wizard, Cleric, Thief, Adventurer, Sorcerer, Hunter
 #Optional: Gunslinger, Beserker, Paladin, Knight
 if choice == "11":
-    print("Do you want:\n1: Base Classes\nor\n2: Optional Classes")
+    print("Do you want:\n1: Base Classes\n2: Half-Life Classes\nor\n3: Optional Classes")
     input("#")
     if choice == "1":
         print("Base: Fighter, Wizard, Cleric, Thief, Adventurer, Sorcerer, Hunter")
-    if choice == "2":
+    if choice == "3":
         print("Optional: Gunslinger, Beserker, Paladin, Knight")
         print("These classes might come with items that cannot be generated elsewhere")
+    if choice == "2":
+        print("Half-Life: Scientist, Guard")
     else:
         print("Ask Cosmo to add any extra classes to the optional classes list!")
 if choice == "12":
@@ -1445,18 +1518,39 @@ while atlas:
             print("The seeing pond of Tomn is a pond enchanted by the god Tomn who has the ability to see into a person's future.")
         if shitfartpoop == "3":
             print("The taverns Asil is the best place to find non-dungeon tasks for any adventurer. It is almost like a village of just taverns, store sheds, outhouses, and inns.")
+        if shitfartpoop == "4":
+            print("The great necromancer's tower of the forests is a towering complex of twists, turns, and undead beasts. It is often found that missing folks are dead, at the base of the tower.")
     if shitfartpoop == "3":
         print("The lake Elvar holds Rivertown, the Lair of the water serpent Hullne, and the Arena of Yalundor")
         print("Where would you like to see next?")
         print("1: Rivertown")
         print("2: the lair of the water serpent Hullne")
         print("3: the arena of Yalundor")  
+        
+        shitfartpoop = input(atl)
+        if shitfartpoop == "1":
+            print("Rivertown is an illustrious village, where the worlds brightest fishermen and technichians work together to innovate in seafaring and travel. It is the largest import of Fish, but it is often found that many sailor crews go missing...")
+        if shitfartpoop == "2":
+            print("Not much is known about the serpent Hullne, except for the tale of Hullne's Blade, which is a magical blade that can cut through any armor.")
+            #serpentisdragonstats
+            #HullnesBlade3d6enemyacishalved
+        if shitfartpoop == "3":
+            print("The arena of Yalundor is a great arena, where adventurers fight great captured beasts for gold. A great way to make a bit of cash.")
+            
     if shitfartpoop == "4":
-        print("The valley of doom holds the entrance to the dungeons of Doom, the labratory of Quemann, and the skeleton of the last Desetunn")
+        print("The valley of doom holds the entrance to the dungeons of Doom, the labratory of Quemann, and the skeleton of the last Desegott")
         print("Where would you like to see next?")
         print("1: the labratory of Quemann")
         print("2: the dungeons of Doom")
-        print("3: the skeleton of the last Desetunn")  
+        print("3: the skeleton of the last Desegott")  
+        
+        shitfartpoop = input(atl)
+        if shitfartpoop == "1":
+            print("The labratory of Quemann is a large complex above the clouds, that floats almost just above the dungeons of doom. It is now abandoned but it was once used to create potions in mass by Demi-Gods. It requires the Cloud Key to enter.")
+        if shitfartpoop == "2":
+            print("The dungeons of Doom is a giant, sprawling, underground dungeon where monsters of any type roam and adventuerers test their luck at obtaining the Amulet of Yendor, an amulet worth 125,000¤, enough to fuel a whole army. A great place to test your luck, before you die that is.")
+        if shitfartpoop == "3":
+            print("The skeleton of the last Desegott, or Demi-God in common, is a Temple where the skeleton of the last surviving Demi-God resides. It is said that adventurers can gain an out-of-body experience from coming here.")
     if shitfartpoop == "5":
         print("The Unitari city has four sectors. The housing, economic, industrial, and agriculture.")
         print("Where would you like to see next?")
@@ -1464,6 +1558,52 @@ while atlas:
         print("2: Economic Sector")
         print("3: Industrial Sector")  
         print("4: Agriculture Sector")
+        shitfartpoop = input(atl)
+        if shitfartpoop == "1":
+            print("The housing sector is a great place to buy a home. In this sector there is a Farmer's Market and the Carpenter's Guild")
+        if shitfartpoop == "2":
+            print("The economic sector is the shopping central of Unitari. It holds the restaraunts, inns, taverns, clothing boutiques, general stores, and all the essentials for an adventurer.")
+        if shitfartpoop == "3":
+            print("The industrial sector is the adventurer's best friend. It has the forges, armories, factories, foundries, and smithies that you can purchase arms and armor at.")
+        if shitfartpoop == "4":
+            print("There is nothing of great note in the Agriculture sector, besides fields, farms, and ranches.")
+num1 = ["2", "3", "4", "5", "6"]
+e1 = ""
+e2 = ""
+encounters = ["Very Good", "Good", "Bad", "Good", "Bad", "Bad", "Very Bad", "Nothing"]
+vgoodenc = ["Trader", "Chest", "Treasure Hoard"]
+goodenc = ["Trader", "Chest", "Monster", "NPC"]
+badenc = ["Monster", "Trap", "Monster", "Trapped Chest"]
+vbadenc = ["Monster", "Monster", "Get Lost", "Monster Ambush"]
+npcclass = ["Wandering Mercenary for Hire", "Sidekick for Hire", "Wandering Knight Duelist", "Merlin, the Traveling Wizard", "Peasant", "Dwarf", "Elf", "Horse"]
+if choice == "14":
+    print("Random Encounter")
+    shit = random.choice(encounters)
+    if shit == "Very Good":
+        print("In this enounter there is a", random.choice(vgoodenc))
+        print("There is also a", random.choice(vgoodenc), "too")
+    if shit == "Good":
+        e1 = random.choice(goodenc)
+        print("In this encounter there is a", random.choice(goodenc))
+        if e1 == "NPC":
+            print("The NPC is a friendly", random.choice(npcclass))
+        if e1 == "Monster":
+            print("The monster is a", random.choice(enemy))
+    if shit == "Bad":
+        e1 = random.choice(badenc)
+        if badenc == "Monster":
+            print("There are two", random.choice(enemy))
+        if badenc == "Trap":
+            print("There is a", random.choice(traps))
+    if shit == "Very Bad":
+        e1 = random.choice(vbadenc)
+        if e1 == "Monster":
+            print("There are", random.choice(num1), enemy)
+        if e1 == "Monster Ambush":
+            print("There are", random.choice(num1), "ambushing", enemy)
+        if e1 == "Get Lost":
+            print("You are now lost, you dont know where you are.")
+    if shit == "Nothing":
+        print("There is no encounter")
 if menu:
     input("Input anything to close the program   ")
-    
